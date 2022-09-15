@@ -1,26 +1,18 @@
 package com.oguzhanturkmen.movee.presentation.popular_movie.components
 
 
-import android.widget.Space
-import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
-import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.FocusRequester.Companion.createRefs
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -28,8 +20,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.constraintlayout.compose.Dimension
 import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.common.Constants.BASE_BACKDROP_IMAGE_URL
 import com.oguzhanturkmen.movee.domain.model.Movie
@@ -145,16 +135,8 @@ fun PopularMoviesItem(movie: Movie, modifier: Modifier) {
 
 @Preview
 @Composable
-fun PreviewRV() {
-    PopularMoviesItem(
-        movie = Movie(
-            1,
-            "Joker",
-            "/v28T5F1IygM8vXWZIycfNEm3xcL.jpg",
-            5.4
-        ),
-        modifier = Modifier
-    )
+fun preview() {
+    PopularMoviesItem(movie = Movie(1, "Joker", "asd", 5.3), modifier = Modifier)
 }
 
 @Preview

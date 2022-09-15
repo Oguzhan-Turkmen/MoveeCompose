@@ -1,10 +1,10 @@
 package com.oguzhanturkmen.movee.presentation.popular_movie
 
-import com.oguzhanturkmen.movee.domain.model.Movies
+import com.oguzhanturkmen.movee.domain.model.Movie
 
 data class PopularMoviesState(
     val isLoading: Boolean = false,
-    val popularMovies: List<Movies> = emptyList(),
+    val popularMovies: List<Movie> = emptyList(),
     val error: String = ""
 )
 

@@ -10,8 +10,7 @@ interface ApiService {
     @GET("movie/popular")
     suspend fun getPopularMovies(
         @Query("page") page: Int = 0,
-        @Query("api_key") apiKey: String = API_KEY,
-        @Query("language") language: String = "en"
-    ): List<MoviesDto>
+        @Query("api_key") apiKey: String = API_KEY
+    ): MoviesDto
 
 }

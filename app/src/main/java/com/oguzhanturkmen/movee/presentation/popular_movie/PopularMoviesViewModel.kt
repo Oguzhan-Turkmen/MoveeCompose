@@ -1,11 +1,14 @@
 package com.oguzhanturkmen.movee.presentation.popular_movie
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.oguzhanturkmen.movee.common.Resource
-import com.oguzhanturkmen.movee.domain.use_case.GetPopularMoviesUseCase
+import com.oguzhanturkmen.movee.domain.useCase.GetPopularMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
@@ -21,6 +24,7 @@ class PopularMoviesViewModel @Inject constructor(
         getPopularMovies()
     }
     private fun getPopularMovies() {
+        Log.d("viewmodel", "burada")
         getPopularMoviesUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
@@ -35,6 +39,6 @@ class PopularMoviesViewModel @Inject constructor(
                     _state.value = PopularMoviesState(isLoading = true)
                 }
             }
-        }
+        }.launchIn(viewModelScope)
     }
 }

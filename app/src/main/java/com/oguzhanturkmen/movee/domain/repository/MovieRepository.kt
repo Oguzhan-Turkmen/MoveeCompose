@@ -1,10 +1,9 @@
 package com.oguzhanturkmen.movee.domain.repository
 
-import com.oguzhanturkmen.movee.data.remote.dto.MoviesDto
-import dagger.Provides
+import com.oguzhanturkmen.movee.domain.model.Movie
 
 
 interface MovieRepository {
 
-    suspend fun getPopularMovie(): List<MoviesDto>
+    suspend fun getPopularMovie(): List<Movie>
 }

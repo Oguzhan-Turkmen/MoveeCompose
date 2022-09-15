@@ -1,7 +1,8 @@
 package com.oguzhanturkmen.movee.di
 
-import com.oguzhanturkmen.movee.data.remote.ApiService
 import com.oguzhanturkmen.movee.common.Constants.BASE_URL
+import com.oguzhanturkmen.movee.data.mapper.MovieDtoMapper
+import com.oguzhanturkmen.movee.data.remote.ApiService
 import com.oguzhanturkmen.movee.data.repository.MovieRepositoryImpl
 import com.oguzhanturkmen.movee.domain.repository.MovieRepository
 import dagger.Module
@@ -12,7 +13,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 
@@ -31,10 +31,6 @@ object AppModule {
     fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
-            .callTimeout(15, TimeUnit.SECONDS)
-            .connectTimeout(15, TimeUnit.SECONDS)
-            .writeTimeout(15, TimeUnit.SECONDS)
-            .readTimeout(15, TimeUnit.SECONDS)
             .build()
     }
 
@@ -51,8 +47,8 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideMovieRepository(api: ApiService) :MovieRepository{
-        return MovieRepositoryImpl(api)
+    fun provideMovieRepository(api: ApiService, movieDtoMapper: MovieDtoMapper): MovieRepository {
+        return MovieRepositoryImpl(api, movieDtoMapper)
     }
 }
 /*
