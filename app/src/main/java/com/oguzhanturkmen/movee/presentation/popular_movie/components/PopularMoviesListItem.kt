@@ -17,7 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oguzhanturkmen.movee.R
@@ -41,8 +40,11 @@ fun PopularMovieImage(
             durationMillis = 500,
             dropOff = 0.65F,
             tilt = 20F,
-        ),
-        modifier = Modifier.size(70.dp, 100.dp),
+
+            ),
+        modifier = Modifier
+            .size(70.dp, 100.dp)
+            .clip(RoundedCornerShape(10.dp)),
         failure = {
             Box(
                 contentAlignment = Alignment.Center,
@@ -107,21 +109,22 @@ fun PopularMovieTitle(movie: Movie, modifier: Modifier) {
 fun PopularMoviesItem(movie: Movie, modifier: Modifier) {
     Card(
         modifier = Modifier
-            .padding(horizontal = 10.dp, vertical = 10.dp)
             .fillMaxWidth(),
         shape = RoundedCornerShape(corner = CornerSize(10.dp))
     )
     {
         Row(
-            modifier = Modifier.padding(5.dp)
+            modifier = Modifier.padding(4.dp)
         ) {
             PopularMovieImage(
                 movie = movie,
                 modifier = modifier
                     .padding(start = 8.dp, top = 8.dp)
             )
-            Spacer(modifier = Modifier.width(20.dp))
-            Column() {
+            Column(
+                modifier = Modifier
+                    .padding(start = 12.dp)
+            ) {
                 PopularMovieTitle(
                     movie = movie,
                     modifier = modifier
@@ -133,6 +136,7 @@ fun PopularMoviesItem(movie: Movie, modifier: Modifier) {
     }
 }
 
+/*
 @Preview
 @Composable
 fun preview() {
@@ -164,4 +168,5 @@ fun PreviewImage() {
         modifier = Modifier
     )
 }
+*/
 
