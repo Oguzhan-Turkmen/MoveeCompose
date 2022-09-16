@@ -1,4 +1,4 @@
-package com.oguzhanturkmen.movee.presentation.popular_movie.components
+package com.oguzhanturkmen.movee.presentation.popularMovie.components
 
 
 import androidx.compose.foundation.Image
@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oguzhanturkmen.movee.R
@@ -29,7 +31,7 @@ import com.skydoves.landscapist.coil.CoilImage
 @Composable
 fun PopularMovieImage(
     movie: Movie,
-    modifier: Modifier
+    modifier: Modifier,
 ) {
     val posterPath = BASE_BACKDROP_IMAGE_URL + movie.posterPath
     CoilImage(
@@ -105,12 +107,18 @@ fun PopularMovieTitle(movie: Movie, modifier: Modifier) {
     )
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun PopularMoviesItem(movie: Movie, modifier: Modifier) {
+fun PopularMoviesItem(
+    movie: Movie,
+    modifier: Modifier,
+    onClick: () -> Unit,
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth(),
-        shape = RoundedCornerShape(corner = CornerSize(10.dp))
+        shape = RoundedCornerShape(corner = CornerSize(10.dp)),
+        onClick = onClick
     )
     {
         Row(
@@ -129,19 +137,68 @@ fun PopularMoviesItem(movie: Movie, modifier: Modifier) {
                     movie = movie,
                     modifier = modifier
                 )
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(8.dp))
                 Rating(movie = movie, modifier = modifier)
+                Spacer(modifier = Modifier.height(8.dp))
+                showRealeseDate(movie = movie, modifier = modifier)
             }
         }
     }
 }
 
+
+@Composable
+fun showRealeseDate(movie: Movie, modifier: Modifier) {
+    Row(
+    ) {
+        Image(
+            modifier = Modifier,
+            painter = painterResource(id = R.drawable.calendar),
+            contentDescription = null,
+        )
+        Text(
+            modifier = Modifier
+                .padding(start = 4.dp)
+                .padding(vertical = 4.dp),
+            text = "${movie.releaseDate}",
+            fontSize = 12.sp
+        )
+    }
+}
+
+@Preview
+@Composable
+fun previewReleaseDate() {
+    showRealeseDate(
+        movie =
+        Movie(
+            1,
+            "Joker",
+            "asd",
+            5.3,
+            "2022-08-11"
+        ),
+        modifier = Modifier
+    )
+}
+
+// Bir sürü paramatre eklendi preview yaparkan hata alabilirsin parametreleri kontrol et açmadan önce
+
 /*
 @Preview
 @Composable
 fun preview() {
-    PopularMoviesItem(movie = Movie(1, "Joker", "asd", 5.3), modifier = Modifier)
+    PopularMoviesItem(
+        movie = Movie(
+            1,
+            "Joker",
+            "asd",
+            5.3,
+            "2022-08-11"
+        ), modifier = Modifier
+    )
 }
+
 
 @Preview
 @Composable

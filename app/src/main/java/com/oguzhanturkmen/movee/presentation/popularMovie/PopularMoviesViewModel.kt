@@ -1,4 +1,4 @@
-package com.oguzhanturkmen.movee.presentation.popular_movie
+package com.oguzhanturkmen.movee.presentation.popularMovie
 
 import android.util.Log
 import androidx.compose.runtime.State

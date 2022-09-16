@@ -1,4 +1,4 @@
-package com.oguzhanturkmen.movee.presentation.popular_movie
+package com.oguzhanturkmen.movee.presentation.popularMovie
 
 import com.oguzhanturkmen.movee.domain.model.Movie
 

@@ -1,7 +1,6 @@
 package com.oguzhanturkmen.movee.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
-import com.oguzhanturkmen.movee.domain.model.Movie
 
 
 data class MovieDto(
@@ -29,11 +28,3 @@ data class MovieDto(
     val voteCount: Int
 )
 
-fun  MovieDto.toMovies(): Movie{
-    return Movie(
-        id = id,
-        originalTitle = originalTitle,
-        posterPath = posterPath,
-        voteAvarage = voteAverage
-    )
-}

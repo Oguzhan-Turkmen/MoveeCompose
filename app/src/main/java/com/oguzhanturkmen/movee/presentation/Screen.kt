@@ -1,6 +1,6 @@
 package com.oguzhanturkmen.movee.presentation
 
-sealed class Screen {
-
-    //EKRANLARI BURADA TANIMLA Navigation İÇİN
+sealed class Screen(val route: String) {
+    object PopularMoviesScreen : Screen("popular_movie_screen")
+    object MovieDetailScreen : Screen("movie_detail_screen")
 }
