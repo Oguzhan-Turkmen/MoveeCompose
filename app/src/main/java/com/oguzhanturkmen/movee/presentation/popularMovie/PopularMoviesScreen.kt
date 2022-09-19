@@ -1,6 +1,9 @@
 package com.oguzhanturkmen.movee.presentation.popularMovie
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
@@ -22,7 +25,8 @@ fun PopularMoviesScreen(
     navController: NavController
 ) {
     val state = viewModel.state.value
-    Box(modifier = Modifier.fillMaxSize()) {
+    //fillmaxsize silindi
+    Box(modifier = Modifier) {
         LazyColumn(
             modifier = Modifier
                 .padding(start = 8.dp, end = 8.dp),

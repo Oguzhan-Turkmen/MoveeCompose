@@ -94,6 +94,9 @@ dependencies {
 
     implementation "com.github.skydoves:landscapist-coil:1.4.9"
 
+    implementation "com.google.accompanist:accompanist-pager:0.25.1"
+
+
 
 
 }
