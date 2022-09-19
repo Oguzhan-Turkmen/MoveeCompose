@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.oguzhanturkmen.movee.presentation.Screen
 import com.oguzhanturkmen.movee.presentation.movieDetail.MovieDetailScreen
+import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.NowPlayingMoviesScreen
 import com.oguzhanturkmen.movee.presentation.popularMovie.PopularMoviesScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             NavHost(
                 navController = navController,
-                startDestination = Screen.PopularMoviesScreen.route
+                startDestination = Screen.NowPlayingMoviesScreen.route
             ) {
                 composable(
                     route = Screen.PopularMoviesScreen.route
@@ -31,9 +32,13 @@ class MainActivity : ComponentActivity() {
                 ) {
                     MovieDetailScreen()
                 }
+                composable(
+                    route = Screen.NowPlayingMoviesScreen.route
+                )
+                {
+                    NowPlayingMoviesScreen(navController = navController)
+                }
             }
-            //PopularMoviesListScreen()
-
         }
     }
 }
