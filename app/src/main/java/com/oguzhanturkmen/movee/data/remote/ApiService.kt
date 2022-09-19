@@ -14,4 +14,10 @@ interface ApiService {
         @Query("language") language: String = "en"
     ): MoviesDto
 
+    @GET("/movie/now_playing")
+    suspend fun getNowPlayingMovies(
+        @Query("page") page: Int = 1,
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("language") language: String = "en"
+    ): MoviesDto
 }

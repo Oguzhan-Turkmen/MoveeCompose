@@ -14,4 +14,8 @@ class MovieRepositoryImpl @Inject constructor(
     override suspend fun getPopularMovie(): List<Movie> {
         return movieDtoMapper.toDomainList(apiService.getPopularMovies().results)
     }
+
+    override suspend fun getNowPlayingMovie(): List<Movie> {
+        return movieDtoMapper.toDomainList(apiService.getNowPlayingMovies().results)
+    }
 }

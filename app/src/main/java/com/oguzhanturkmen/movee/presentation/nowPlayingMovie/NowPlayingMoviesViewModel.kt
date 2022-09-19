@@ -1,40 +1,42 @@
-package com.oguzhanturkmen.movee.presentation.popularMovie
+package com.oguzhanturkmen.movee.presentation.nowPlayingMovie
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.oguzhanturkmen.movee.common.Resource
-import com.oguzhanturkmen.movee.domain.useCase.GetPopularMoviesUseCase
+import com.oguzhanturkmen.movee.domain.useCase.GetNowPlayingMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
-class PopularMoviesViewModel @Inject constructor(
-    private val getPopularMoviesUseCase: GetPopularMoviesUseCase
+class NowPlayingMoviesViewModel @Inject constructor(
+    private val getNowPlayingMoviesUseCase: GetNowPlayingMoviesUseCase
 ) : ViewModel() {
 
-    private val _state = mutableStateOf(PopularMoviesState())
-    val state: State<PopularMoviesState> = _state
+    private val _state = mutableStateOf(NowPlayingMoviesState())
+    val state: State<NowPlayingMoviesState> = _state
 
     init {
-        getPopularMovies()
+        getNowPlayingMovies()
     }
-    private fun getPopularMovies() {
-        getPopularMoviesUseCase().onEach { result ->
+
+    private fun getNowPlayingMovies() {
+        getNowPlayingMoviesUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _state.value = PopularMoviesState(popularMovies = result.data ?: emptyList())
+                    _state.value =
+                        NowPlayingMoviesState(nowPlayingMovies = result.data ?: emptyList())
                 }
                 is Resource.Error -> {
-                    _state.value = PopularMoviesState(
+                    _state.value = NowPlayingMoviesState(
                         error = result.statusMessage ?: "An unexpected error occured"
                     )
                 }
                 is Resource.Loading -> {
-                    _state.value = PopularMoviesState(isLoading = true)
+                    _state.value = NowPlayingMoviesState(isLoading = true)
                 }
             }
         }.launchIn(viewModelScope)
