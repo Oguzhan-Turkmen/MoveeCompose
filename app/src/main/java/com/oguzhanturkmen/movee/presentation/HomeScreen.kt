@@ -21,7 +21,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.oguzhanturkmen.movee.presentation.movieDetail.MovieDetailScreen
-import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.NowPlayingMoviesScreen
+import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.SnappyLazyRow
 import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.components.gradient
 import com.oguzhanturkmen.movee.presentation.popularMovie.PopularMoviesScreen
 import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
@@ -65,14 +65,13 @@ fun HomeScreen(
         Column() {
             Text(
                 modifier = Modifier
-                    .padding(top = 48.dp, start = 32.dp),
+                    .padding(top = 32.dp, start = 32.dp),
                 text = "Movies",
                 style = TextStyle(fontSize = 34.sp),
                 color = Color.White,
                 fontWeight = FontWeight.Bold
             )
-            NowPlayingMoviesScreen(navController = navController)
-
+            SnappyLazyRow(navController = navController)
             Text(
                 modifier = Modifier
                     .padding(top = 16.dp, start = 32.dp),

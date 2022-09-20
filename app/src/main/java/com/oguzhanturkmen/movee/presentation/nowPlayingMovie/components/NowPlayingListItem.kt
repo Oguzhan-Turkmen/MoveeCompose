@@ -99,11 +99,10 @@ fun nowPlayingMovieImage(
             durationMillis = 500,
             dropOff = 0.65F,
             tilt = 20F,
-
-            ),
+        ),
         modifier = Modifier
-            .size(100.dp, 140.dp)
-            .clip(RoundedCornerShape(4.dp)),
+            .size(160.dp, 240.dp)
+            .clip(RoundedCornerShape(12.dp)),
         failure = {
             Box(
                 contentAlignment = Alignment.Center,

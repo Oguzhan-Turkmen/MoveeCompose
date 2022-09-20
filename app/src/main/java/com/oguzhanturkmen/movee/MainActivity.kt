@@ -13,7 +13,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             Navigation()
             //gradiant()
-
+            //SnappyLazyRow()
+            //horizontalPager()
             /*
                NavHost(
                    navController = navController,
