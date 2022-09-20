@@ -29,7 +29,7 @@ fun PopularMoviesScreen(
     Box(modifier = Modifier) {
         LazyColumn(
             modifier = Modifier
-                .padding(start = 8.dp, end = 8.dp),
+                .padding(start = 32.dp, end = 32.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             items(state.popularMovies) { movie ->

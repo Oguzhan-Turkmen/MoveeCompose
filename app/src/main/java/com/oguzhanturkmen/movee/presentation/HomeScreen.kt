@@ -1,11 +1,16 @@
 package com.oguzhanturkmen.movee.presentation
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -17,7 +22,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.oguzhanturkmen.movee.presentation.movieDetail.MovieDetailScreen
 import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.NowPlayingMoviesScreen
+import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.components.gradient
 import com.oguzhanturkmen.movee.presentation.popularMovie.PopularMoviesScreen
+import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
 
 
 @Composable
@@ -33,20 +40,9 @@ fun Navigation() {
             HomeScreen(navController = navController)
         }
         composable(
-            route = Screen.PopularMoviesScreen.route
-        ) {
-            PopularMoviesScreen(navController = navController)
-        }
-        composable(
             route = Screen.MovieDetailScreen.route
         ) {
             MovieDetailScreen()
-        }
-        composable(
-            route = Screen.NowPlayingMoviesScreen.route
-        )
-        {
-            NowPlayingMoviesScreen(navController = navController)
         }
     }
 }
@@ -56,39 +52,62 @@ fun Navigation() {
 fun HomeScreen(
     navController: NavController,
 ) {
-    Column() {
-        Text(
-            text = "Now Playing",
-            style = TextStyle(fontSize = 24.sp),
-            color = Color.Black,
-            fontWeight = FontWeight.Bold
-        )
-        NowPlayingMoviesScreen(navController = navController)
-        Spacer(modifier = Modifier.height(15.dp))
-        Text(
-            text = "Popular Movies",
-            style = TextStyle(fontSize = 24.sp),
-            color = Color.Black,
-            fontWeight = FontWeight.Bold
-        )
-        PopularMoviesScreen(navController = navController)
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .drawBehind {
+                drawRect(
+                    brush = gradient,
+                    topLeft = Offset(x = 0f, y = 0.dp.toPx()),
+                    size = Size(500.dp.toPx(), 250.dp.toPx())
+                )
+            }) {
+        Column() {
+            Text(
+                modifier = Modifier
+                    .padding(top = 48.dp, start = 32.dp),
+                text = "Movies",
+                style = TextStyle(fontSize = 34.sp),
+                color = Color.White,
+                fontWeight = FontWeight.Bold
+            )
+            NowPlayingMoviesScreen(navController = navController)
+
+            Text(
+                modifier = Modifier
+                    .padding(top = 16.dp, start = 32.dp),
+                text = "Popular Movies",
+                style = TextStyle(fontSize = 24.sp),
+                color = Color.Black,
+                fontWeight = FontWeight.Bold
+            )
+            PopularMoviesScreen(navController = navController)
+        }
     }
 
 
+    val gradient = Brush.linearGradient(
+        0.3f to Color.Green,
+        1.0f to RatingBarColor,
+        start = Offset(0.0f, 50.0f),
+        end = Offset(0.0f, 50.0f)
+    )
+
+    @Composable
+    fun gradiant() {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .drawBehind {
+                    drawRect(
+                        brush = gradient,
+                        topLeft = Offset(x = 0f, y = 0.dp.toPx()),
+                        size = Size(500.dp.toPx(), 250.dp.toPx())
+                    )
+                }
+
+
+        )
+    }
+
 }
-
-
-//@Preview
-//@Composable
-//fun previewHomeScreen() {
-//    HomeScreen(
-//        movie = Movie(
-//            1,
-//            "Joker",
-//            "asd",
-//            5.3,
-//            "2022-08-11"
-//        ),
-//        modifier = Modifier
-//    )
-//}

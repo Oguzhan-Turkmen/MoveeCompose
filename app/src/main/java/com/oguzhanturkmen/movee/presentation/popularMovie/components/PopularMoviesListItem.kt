@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -25,6 +26,7 @@ import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.common.Constants.BASE_BACKDROP_IMAGE_URL
 import com.oguzhanturkmen.movee.domain.model.Movie
 import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
+import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.coil.CoilImage
 
@@ -64,8 +66,11 @@ fun PopularMovieImage(
                 )
             }
         },
-        previewPlaceholder = R.drawable.image_not_available
-    )
+        previewPlaceholder = R.drawable.image_not_available,
+        contentScale = ContentScale.Crop,
+        circularReveal = CircularReveal(duration = 1000),
+
+        )
 }
 
 @Composable

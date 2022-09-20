@@ -1,9 +1,7 @@
 package com.oguzhanturkmen.movee.presentation.nowPlayingMovie
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
@@ -18,6 +16,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.oguzhanturkmen.movee.presentation.Screen
 import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.components.nowPlayingMoviesItem
+import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
 
 
 @Composable
@@ -27,7 +26,17 @@ fun NowPlayingMoviesScreen(
 ) {
     val state = viewmodel.state.value
     //modifier fillmaxsize sildim
-    Box(modifier = Modifier) {
+    Box(
+        modifier = Modifier
+    ) {
+        Box(
+            modifier = Modifier
+                .background(RatingBarColor)
+                .fillMaxWidth()
+                .height(200.dp)
+        ) {
+
+        }
         LazyRow(
             modifier = Modifier
                 .padding(start = 4.dp, end = 4.dp),

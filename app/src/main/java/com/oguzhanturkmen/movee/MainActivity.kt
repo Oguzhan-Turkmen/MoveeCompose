@@ -12,7 +12,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Navigation()
-            /*   val navController = rememberNavController()
+            //gradiant()
+
+            /*
                NavHost(
                    navController = navController,
                    startDestination = Screen.NowPlayingMoviesScreen.route

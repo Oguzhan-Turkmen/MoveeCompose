@@ -13,7 +13,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -24,6 +29,7 @@ import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.common.Constants
 import com.oguzhanturkmen.movee.domain.model.Movie
 import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
+import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.coil.CoilImage
 
@@ -115,7 +121,9 @@ fun nowPlayingMovieImage(
                 )
             }
         },
-        previewPlaceholder = R.drawable.image_not_available
+        previewPlaceholder = R.drawable.image_not_available,
+        contentScale = ContentScale.Crop,
+        circularReveal = CircularReveal(duration = 1000),
     )
 }
 
@@ -157,6 +165,36 @@ fun nowPlayingMovieTitle(movie: Movie, modifier: Modifier) {
         color = Color.Black,
         fontWeight = FontWeight.Bold
     )
+}
+
+val gradient = Brush.linearGradient(
+    0.3f to Color.Green,
+    1.0f to RatingBarColor,
+    start = Offset(0.0f, 50.0f),
+    end = Offset(0.0f, 50.0f)
+)
+
+@Composable
+fun gradiant() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .drawBehind {
+                drawRect(
+                    brush = gradient,
+                    topLeft = Offset(x = 0f, y = 0.dp.toPx()),
+                    size = Size(500.dp.toPx(), 250.dp.toPx())
+                )
+            }
+
+
+    )
+}
+
+@Preview
+@Composable
+fun preview1() {
+    gradiant()
 }
 
 @Preview
