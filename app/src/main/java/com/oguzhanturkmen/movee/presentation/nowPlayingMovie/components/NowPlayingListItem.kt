@@ -60,7 +60,7 @@ fun nowPlayingMoviesItem(
                 movie = movie,
                 modifier = modifier
             )
-            Rating(
+            nowPlayingRating(
                 movie = movie,
                 modifier = modifier
             )
@@ -101,7 +101,7 @@ fun nowPlayingMovieImage(
             tilt = 20F,
         ),
         modifier = Modifier
-            .size(160.dp, 240.dp)
+            .size(200.dp, 300.dp)
             .clip(RoundedCornerShape(12.dp)),
         failure = {
             Box(
@@ -126,13 +126,12 @@ fun nowPlayingMovieImage(
     )
 }
 
-
 @Composable
-fun Rating(movie: Movie, modifier: Modifier) {
+fun nowPlayingRating(movie: Movie, modifier: Modifier) {
     val shape = RoundedCornerShape(12.dp)
     Box(
         modifier = Modifier
-            .size(50.dp, 20.dp)
+            .size(61.dp, 28.dp)
             .clip(shape)
             .background(RatingBarColor),
         Alignment.Center
@@ -144,12 +143,12 @@ fun Rating(movie: Movie, modifier: Modifier) {
                 painter = painterResource(id = R.drawable.star),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(13.dp, 13.dp)
-                    .padding(1.dp)
+                    .size(20.dp, 20.dp)
+                    .padding(end = 4.dp)
             )
             Text(
                 text = "${movie.voteAvarage}",
-                fontSize = 10.sp,
+                fontSize = 14.sp,
                 color = Color.White
             )
         }
@@ -205,7 +204,7 @@ fun PreviewPopularMovieTitle() {
 @Preview
 @Composable
 fun PreviewRating() {
-    Rating(movie = Movie(1, "Joker", "asd", 5.3, "2022-08-11"), modifier = Modifier)
+    nowPlayingRating(movie = Movie(1, "Joker", "asd", 5.3, "2022-08-11"), modifier = Modifier)
 }
 
 @Preview

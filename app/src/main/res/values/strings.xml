@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Movee</string>
+    <string name="horiz_pager_with_transition_title">1</string>
 </resources>
