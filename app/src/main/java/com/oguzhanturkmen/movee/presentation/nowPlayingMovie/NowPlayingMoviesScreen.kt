@@ -47,7 +47,6 @@ fun NowPlayingMoviesScreen(
                 .fillMaxWidth()
                 .height(200.dp)
         ) {
-
         }
         LazyRow(
             modifier = Modifier
@@ -88,9 +87,10 @@ fun NowPlayingMoviesScreen(
 fun HorizontalPagerWithOffsetTransition(
     modifier: Modifier = Modifier.padding(top = 12.dp),
     viewmodel: NowPlayingMoviesViewModel = hiltViewModel(),
+
     onClick: () -> Unit
 ) {
-    val value = viewmodel.state.value
+    val state = viewmodel.state.value
     HorizontalPager(
         count = viewmodel.state.value.nowPlayingMovies.size,
         contentPadding = PaddingValues(horizontal = 20.dp),
@@ -124,12 +124,26 @@ fun HorizontalPagerWithOffsetTransition(
             //verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             nowPlayingMovieImage(
-                movie = value.nowPlayingMovies[page],
+                movie = state.nowPlayingMovies[page],
                 modifier = Modifier.padding(start = 4.dp, top = 4.dp)
             )
-            nowPlayingMovieTitle(movie = value.nowPlayingMovies[page], modifier = Modifier)
-            nowPlayingRating(movie = value.nowPlayingMovies[page], modifier = Modifier)
+            nowPlayingMovieTitle(movie = state.nowPlayingMovies[page], modifier = Modifier)
+            nowPlayingRating(movie = state.nowPlayingMovies[page], modifier = Modifier)
         }
+    }
+    if (state.error.isNotBlank()) {
+        Text(
+            text = state.error,
+            color = MaterialTheme.colors.error,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp)
+
+        )
+    }
+    if (state.isLoading) {
+        CircularProgressIndicator(modifier = Modifier)
     }
 
 }
