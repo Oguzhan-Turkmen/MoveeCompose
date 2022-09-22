@@ -19,7 +19,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oguzhanturkmen.movee.R
@@ -171,6 +170,7 @@ fun showRealeseDate(movie: Movie, modifier: Modifier) {
     }
 }
 
+/*
 @Preview
 @Composable
 fun previewReleaseDate() {
@@ -186,6 +186,7 @@ fun previewReleaseDate() {
         modifier = Modifier
     )
 }
+*/
 
 // Bir sürü paramatre eklendi preview yaparkan hata alabilirsin parametreleri kontrol et açmadan önce
 

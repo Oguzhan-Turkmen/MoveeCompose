@@ -40,7 +40,7 @@ fun Navigation() {
             HomeScreen(navController = navController)
         }
         composable(
-            route = Screen.MovieDetailScreen.route
+            route = Screen.MovieDetailScreen.route + "{movieId}"
         ) {
             MovieDetailScreen()
         }

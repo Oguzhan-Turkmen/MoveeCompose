@@ -87,7 +87,6 @@ fun NowPlayingMoviesScreen(
 fun HorizontalPagerWithOffsetTransition(
     modifier: Modifier = Modifier.padding(top = 12.dp),
     viewmodel: NowPlayingMoviesViewModel = hiltViewModel(),
-
     onClick: () -> Unit
 ) {
     val state = viewmodel.state.value
