@@ -9,5 +9,4 @@ data class MovieDetail(
     val releaseDate: String,
     val runtime: Int,
     val voteAverage: Double,
-
     )

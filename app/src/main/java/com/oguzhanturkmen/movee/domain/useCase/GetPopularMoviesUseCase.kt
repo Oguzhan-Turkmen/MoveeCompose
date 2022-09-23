@@ -16,12 +16,12 @@ class GetPopularMoviesUseCase @Inject constructor(
         try {
             emit(Resource.Loading())
             val popularMovies = repository.getPopularMovie()
-            emit(Resource.Success<List<Movie>>(popularMovies))
+            emit(Resource.Success(popularMovies))
         } catch (e: HttpException) {
-            emit(Resource.Error<List<Movie>>(e.localizedMessage ?: "An unexpected error occured"))
+            emit(Resource.Error(e.localizedMessage ?: "An unexpected error occured"))
         } catch (e: IOException) {
             emit(
-                Resource.Error<List<Movie>>(
+                Resource.Error(
                     e.localizedMessage ?: "Couldn't reach server. Check your internet connection."
                 )
             )

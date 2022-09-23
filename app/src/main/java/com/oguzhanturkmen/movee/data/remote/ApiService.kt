@@ -23,11 +23,10 @@ interface ApiService {
         @Query("language") language: String = "en"
     ): MoviesDto
 
-    @GET("movie/{movieid}")
+    @GET("movie/{movieId}")
     suspend fun getMovieDetail(
-        @Path("movieid") movieid: Int,
-        @Query("page") page: Int = 1,
-        @Query("api_key") apiKey: String = API_KEY
+        @Path("movieId") movieId: Int,
+        @Query("api_key") apiKey: String = API_KEY,
     ): MovieDetailDto
 
 }

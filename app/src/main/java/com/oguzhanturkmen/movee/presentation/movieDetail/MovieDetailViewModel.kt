@@ -4,10 +4,12 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.oguzhanturkmen.movee.common.Constants
 import com.oguzhanturkmen.movee.common.Resource
 import com.oguzhanturkmen.movee.domain.useCase.GetMovieDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
@@ -41,6 +43,6 @@ class MovieDetailViewModel @Inject constructor(
                     _state.value = MovieDetailState(isLoading = true)
                 }
             }
-        }
+        }.launchIn(viewModelScope)
     }
 }

@@ -87,17 +87,13 @@ fun NowPlayingMoviesScreen(
 fun HorizontalPagerWithOffsetTransition(
     modifier: Modifier = Modifier.padding(top = 12.dp),
     viewmodel: NowPlayingMoviesViewModel = hiltViewModel(),
-    onClick: () -> Unit
+    onClick: (movieId: Int) -> Unit
 ) {
     val state = viewmodel.state.value
     HorizontalPager(
         count = viewmodel.state.value.nowPlayingMovies.size,
         contentPadding = PaddingValues(horizontal = 20.dp),
-        modifier = modifier.clickable(
-            indication = null,
-            interactionSource = remember { MutableInteractionSource() }) {
-            onClick()
-        },
+        modifier = modifier,
     ) { page ->
         Column(
             Modifier
@@ -116,6 +112,11 @@ fun HorizontalPagerWithOffsetTransition(
                         stop = 1f,
                         fraction = 1f - pageOffset.coerceIn(0f, 0f)
                     )
+                }
+                .clickable(
+                    indication = null,
+                    interactionSource = remember { MutableInteractionSource() }) {
+                    onClick(state.nowPlayingMovies[page].id)
                 }
                 .fillMaxWidth()
                 .aspectRatio(1f),

@@ -82,7 +82,11 @@ fun Rating(movie: Movie, modifier: Modifier) {
             .background(RatingBarColor),
         Alignment.Center
     ) {
-        Row(modifier = Modifier)
+        Row(
+            modifier = Modifier,
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
+        )
         {
             Alignment.Center
             Image(
@@ -144,7 +148,7 @@ fun PopularMoviesItem(
                 Spacer(modifier = Modifier.height(8.dp))
                 Rating(movie = movie, modifier = modifier)
                 Spacer(modifier = Modifier.height(8.dp))
-                showRealeseDate(movie = movie, modifier = modifier)
+                showReleaseDate(movie = movie, modifier = modifier)
             }
         }
     }
@@ -152,7 +156,7 @@ fun PopularMoviesItem(
 
 
 @Composable
-fun showRealeseDate(movie: Movie, modifier: Modifier) {
+fun showReleaseDate(movie: Movie, modifier: Modifier) {
     Row(
     ) {
         Image(

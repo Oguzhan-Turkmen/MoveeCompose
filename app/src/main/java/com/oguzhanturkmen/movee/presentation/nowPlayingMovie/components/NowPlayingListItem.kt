@@ -135,7 +135,11 @@ fun nowPlayingRating(movie: Movie, modifier: Modifier) {
             .background(RatingBarColor),
         Alignment.Center
     ) {
-        Row(modifier = Modifier)
+        Row(
+            modifier = Modifier,
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
+        )
         {
             Alignment.Center
             Image(
