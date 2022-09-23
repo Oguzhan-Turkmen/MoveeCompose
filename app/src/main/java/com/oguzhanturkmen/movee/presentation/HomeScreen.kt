@@ -17,9 +17,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.oguzhanturkmen.movee.presentation.movieDetail.MovieDetailScreen
 import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.HorizontalPagerWithOffsetTransition
 import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.components.gradient
@@ -40,7 +42,8 @@ fun Navigation() {
             HomeScreen(navController = navController)
         }
         composable(
-            route = Screen.MovieDetailScreen.route + "{movieId}"
+            route = Screen.MovieDetailScreen.route + " {movieId}",
+            arguments = listOf(navArgument("moviId") { type = NavType.IntType })
         ) {
             MovieDetailScreen()
         }

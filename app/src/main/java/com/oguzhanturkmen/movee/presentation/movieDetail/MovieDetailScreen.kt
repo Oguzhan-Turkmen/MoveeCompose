@@ -1,9 +1,22 @@
 package com.oguzhanturkmen.movee.presentation.movieDetail
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
+
 
 @Composable
-fun MovieDetailScreen() {
-    Text(text = "Detail Screen")
+fun MovieDetailScreen(
+    viewModel: MovieDetailViewModel = hiltViewModel(),
+) {
+    val state = viewModel.state.value
+    Box(modifier = Modifier.fillMaxSize()) {
+        state.movie?.let { movieDetail ->
+            Text(text = "${movieDetail.id}")
+        }
+
+    }
 }
