@@ -39,10 +39,11 @@ fun movieDetailImage(
             dropOff = 0.65F,
             tilt = 20F,
         ),
+
         modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight(),
-
+            .height(300.dp),
+        contentScale = ContentScale.Crop,
         failure = {
             Box(
                 contentAlignment = Alignment.Center,
@@ -61,9 +62,7 @@ fun movieDetailImage(
             }
         },
         previewPlaceholder = R.drawable.image_not_available,
-        contentScale = ContentScale.Crop,
         circularReveal = CircularReveal(duration = 1000),
-
         )
 }
 
