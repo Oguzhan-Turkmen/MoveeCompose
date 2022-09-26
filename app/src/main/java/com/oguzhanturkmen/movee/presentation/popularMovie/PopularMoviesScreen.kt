@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.oguzhanturkmen.movee.presentation.Screen
+import com.oguzhanturkmen.movee.presentation.navigation.Screen
 import com.oguzhanturkmen.movee.presentation.popularMovie.components.PopularMoviesItem
 
 @Composable

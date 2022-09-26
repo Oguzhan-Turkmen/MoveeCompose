@@ -22,7 +22,7 @@ import androidx.navigation.NavController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.calculateCurrentOffsetForPage
-import com.oguzhanturkmen.movee.presentation.Screen
+import com.oguzhanturkmen.movee.presentation.navigation.Screen
 import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.components.nowPlayingMovieImage
 import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.components.nowPlayingMovieTitle
 import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.components.nowPlayingMoviesItem
@@ -84,7 +84,7 @@ fun NowPlayingMoviesScreen(
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun HorizontalPagerWithOffsetTransition(
+fun nowPlayingMoviesHorizontalPager(
     modifier: Modifier = Modifier.padding(top = 12.dp),
     viewmodel: NowPlayingMoviesViewModel = hiltViewModel(),
     onClick: (movieId: Int) -> Unit

@@ -16,41 +16,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
-import com.oguzhanturkmen.movee.presentation.movieDetail.MovieDetailScreen
-import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.HorizontalPagerWithOffsetTransition
+import com.oguzhanturkmen.movee.presentation.navigation.Screen
 import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.components.gradient
+import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.nowPlayingMoviesHorizontalPager
 import com.oguzhanturkmen.movee.presentation.popularMovie.PopularMoviesScreen
 
-
 @Composable
-fun Navigation() {
-    val navController = rememberNavController()
-    NavHost(
-        navController = navController,
-        startDestination = Screen.HomeScreen.route
-    ) {
-        composable(
-            route = Screen.HomeScreen.route
-        ) {
-            HomeScreen(navController = navController)
-        }
-        composable(
-            route = Screen.MovieDetailScreen.route + "{movieId}",
-            arguments = listOf(navArgument("movieId") { type = NavType.IntType })
-        ) {
-            MovieDetailScreen()
-        }
-    }
-}
-
-
-@Composable
-fun HomeScreen(
+fun MoviesScreen(
     navController: NavController,
 ) {
     Box(
@@ -72,7 +44,7 @@ fun HomeScreen(
                 color = Color.White,
                 fontWeight = FontWeight.Bold
             )
-            HorizontalPagerWithOffsetTransition(
+            nowPlayingMoviesHorizontalPager(
                 onClick = { navController.navigate(Screen.MovieDetailScreen.route + it) }
             )
             Text(
