@@ -1,11 +1,11 @@
-package com.oguzhanturkmen.movee.presentation.movieDetail
+package com.oguzhanturkmen.movee.presentation.moviedetail
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.oguzhanturkmen.movee.presentation.movieDetail.components.*
+import com.oguzhanturkmen.movee.presentation.moviedetail.components.*
 
 
 @Composable

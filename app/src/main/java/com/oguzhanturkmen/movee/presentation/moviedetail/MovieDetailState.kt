@@ -1,4 +1,4 @@
-package com.oguzhanturkmen.movee.presentation.movieDetail
+package com.oguzhanturkmen.movee.presentation.moviedetail
 
 import com.oguzhanturkmen.movee.domain.model.movieDetail.MovieDetail
 

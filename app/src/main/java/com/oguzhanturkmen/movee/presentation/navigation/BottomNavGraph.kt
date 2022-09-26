@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.oguzhanturkmen.movee.presentation.TvSeries.TvSeriesScreen
+import com.oguzhanturkmen.movee.presentation.tvseries.TvSeriesScreen
 
 @Composable
 fun BottomNavGraph(navController: NavHostController) {

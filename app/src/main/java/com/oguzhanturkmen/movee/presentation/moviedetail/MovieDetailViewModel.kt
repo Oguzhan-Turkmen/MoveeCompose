@@ -1,4 +1,4 @@
-package com.oguzhanturkmen.movee.presentation.movieDetail
+package com.oguzhanturkmen.movee.presentation.moviedetail
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf

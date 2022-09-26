@@ -7,6 +7,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
@@ -39,7 +40,6 @@ fun BottomBar(navController: NavHostController) {
             )
         }
     }
-
 }
 
 @Composable
@@ -51,8 +51,7 @@ fun RowScope.AddItem(
     BottomNavigationItem(
         icon = {
             Icon(
-                imageVector = screen.image,
-                contentDescription = "Navigation Icon"
+                painter = painterResource(id = screen.image), contentDescription = "Navigation Icon"
             )
         },
         selected = currentDestination?.hierarchy?.any {

@@ -1,4 +1,4 @@
-package com.oguzhanturkmen.movee.presentation.movieDetail.components
+package com.oguzhanturkmen.movee.presentation.moviedetail.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -43,7 +43,7 @@ fun movieDetailImage(
         modifier = Modifier
             .fillMaxWidth()
             .height(300.dp),
-        contentScale = ContentScale.Crop,
+        contentScale = ContentScale.FillHeight,
         failure = {
             Box(
                 contentAlignment = Alignment.Center,

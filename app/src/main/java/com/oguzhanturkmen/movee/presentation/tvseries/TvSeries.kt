@@ -1,9 +1,9 @@
-package com.oguzhanturkmen.movee.presentation.TvSeries
+package com.oguzhanturkmen.movee.presentation.tvseries
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 
 @Composable
 fun TvSeriesScreen() {
-    Text(text = "Tv Screens")
+    Text(text = "TV Screen")
 }

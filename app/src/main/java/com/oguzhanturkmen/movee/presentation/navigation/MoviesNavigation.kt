@@ -7,7 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.oguzhanturkmen.movee.presentation.MoviesScreen
-import com.oguzhanturkmen.movee.presentation.movieDetail.MovieDetailScreen
+import com.oguzhanturkmen.movee.presentation.moviedetail.MovieDetailScreen
 
 @Composable
 fun MoviesNavigation() {
