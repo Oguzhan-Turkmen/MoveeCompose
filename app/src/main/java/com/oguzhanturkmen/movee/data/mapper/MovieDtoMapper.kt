@@ -1,7 +1,7 @@
 package com.oguzhanturkmen.movee.data.mapper
 
-import com.oguzhanturkmen.movee.data.remote.dto.MovieDto
-import com.oguzhanturkmen.movee.domain.model.Movie
+import com.oguzhanturkmen.movee.data.remote.dto.moviedto.MovieDto
+import com.oguzhanturkmen.movee.domain.model.movie.Movie
 import com.oguzhanturkmen.movee.domain.util.DomainMapper
 import javax.inject.Inject
 

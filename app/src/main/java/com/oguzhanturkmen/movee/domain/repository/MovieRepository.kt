@@ -1,6 +1,6 @@
 package com.oguzhanturkmen.movee.domain.repository
 
-import com.oguzhanturkmen.movee.domain.model.Movie
+import com.oguzhanturkmen.movee.domain.model.movie.Movie
 import com.oguzhanturkmen.movee.domain.model.movieDetail.MovieDetail
 
 

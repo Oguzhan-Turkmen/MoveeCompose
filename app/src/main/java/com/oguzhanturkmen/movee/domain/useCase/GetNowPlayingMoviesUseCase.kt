@@ -1,7 +1,7 @@
 package com.oguzhanturkmen.movee.domain.useCase
 
 import com.oguzhanturkmen.movee.common.Resource
-import com.oguzhanturkmen.movee.domain.model.Movie
+import com.oguzhanturkmen.movee.domain.model.movie.Movie
 import com.oguzhanturkmen.movee.domain.repository.MovieRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

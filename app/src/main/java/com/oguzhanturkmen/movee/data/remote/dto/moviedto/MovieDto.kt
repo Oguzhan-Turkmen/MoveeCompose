@@ -1,4 +1,4 @@
-package com.oguzhanturkmen.movee.data.remote.dto
+package com.oguzhanturkmen.movee.data.remote.dto.moviedto
 
 import com.google.gson.annotations.SerializedName
 

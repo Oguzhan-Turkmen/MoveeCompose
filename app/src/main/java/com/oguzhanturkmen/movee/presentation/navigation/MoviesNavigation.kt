@@ -14,15 +14,15 @@ fun MoviesNavigation() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Screen.HomeScreen.route
+        startDestination = MoviesScreen.MoviesHomeScreen.route
     ) {
         composable(
-            route = Screen.HomeScreen.route
+            route = MoviesScreen.MoviesHomeScreen.route
         ) {
             MoviesScreen(navController = navController)
         }
         composable(
-            route = Screen.MovieDetailScreen.route + "{movieId}",
+            route = MoviesScreen.MovieDetailScreen.route + "{movieId}",
             arguments = listOf(navArgument("movieId") { type = NavType.IntType })
         ) {
             MovieDetailScreen()
@@ -30,7 +30,7 @@ fun MoviesNavigation() {
     }
 }
 
-sealed class Screen(val route: String) {
-    object MovieDetailScreen : Screen("movie_detail_screen")
-    object HomeScreen : Screen("home_screen")
+sealed class MoviesScreen(val route: String) {
+    object MovieDetailScreen : MoviesScreen("movie_detail_screen")
+    object MoviesHomeScreen : MoviesScreen("home_screen")
 }

@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.common.Constants.BASE_BACKDROP_IMAGE_URL
-import com.oguzhanturkmen.movee.domain.model.Movie
+import com.oguzhanturkmen.movee.domain.model.movie.Movie
 import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.ShimmerParams
@@ -32,7 +32,7 @@ import com.skydoves.landscapist.coil.CoilImage
 @Composable
 fun PopularMovieImage(
     movie: Movie,
-    modifier: Modifier,
+    modifier: Modifier
 ) {
     val posterPath = BASE_BACKDROP_IMAGE_URL + movie.posterPath
     CoilImage(

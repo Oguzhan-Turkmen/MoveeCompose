@@ -1,4 +1,4 @@
-package com.oguzhanturkmen.movee.domain.model
+package com.oguzhanturkmen.movee.domain.model.movie
 
 data class Movie(
     val id: Int,

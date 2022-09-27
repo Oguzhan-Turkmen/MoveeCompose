@@ -3,9 +3,12 @@ package com.oguzhanturkmen.movee.di
 import com.oguzhanturkmen.movee.common.Constants.BASE_URL
 import com.oguzhanturkmen.movee.data.mapper.MovieDetailDtoMapper
 import com.oguzhanturkmen.movee.data.mapper.MovieDtoMapper
+import com.oguzhanturkmen.movee.data.mapper.TvSeriesMapper
 import com.oguzhanturkmen.movee.data.remote.ApiService
 import com.oguzhanturkmen.movee.data.repository.MovieRepositoryImpl
+import com.oguzhanturkmen.movee.data.repository.TvSeriesRepositoryImpl
 import com.oguzhanturkmen.movee.domain.repository.MovieRepository
+import com.oguzhanturkmen.movee.domain.repository.TvSeriesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -55,10 +58,14 @@ object AppModule {
     ): MovieRepository {
         return MovieRepositoryImpl(api, movieDtoMapper, movieDetailDtoMapper)
     }
-}
-/*
+
     @Singleton
-    private val provideMoshi = Moshi.Builder()
-        .add(KotlinJsonAdapterFactory())
-        .build()
-}*/
+    @Provides
+    fun provideTvSeriesRepository(
+        api: ApiService,
+        tvSeriesMapper: TvSeriesMapper
+    ): TvSeriesRepository {
+        return TvSeriesRepositoryImpl(api, tvSeriesMapper)
+    }
+}
+
