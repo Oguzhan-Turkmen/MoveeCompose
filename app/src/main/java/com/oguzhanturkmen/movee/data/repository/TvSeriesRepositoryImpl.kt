@@ -14,4 +14,8 @@ class TvSeriesRepositoryImpl @Inject constructor(
         return tvSeriesMapper.toDomainList(apiService.getPopularTvSerials().results)
     }
 
+    override suspend fun getTopRatedTvSeries(): List<TvSeries> {
+        return tvSeriesMapper.toDomainList(apiService.getTopRatedTvSerials().results)
+    }
+
 }

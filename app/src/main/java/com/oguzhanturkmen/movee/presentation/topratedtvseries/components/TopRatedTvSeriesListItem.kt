@@ -1,5 +1,4 @@
-package com.oguzhanturkmen.movee.presentation.popularMovie.components
-
+package com.oguzhanturkmen.movee.presentation.topratedtvseries.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -19,22 +18,23 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.common.Constants.BASE_BACKDROP_IMAGE_URL
-import com.oguzhanturkmen.movee.domain.model.movie.Movie
+import com.oguzhanturkmen.movee.domain.model.series.TvSeries
 import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.coil.CoilImage
 
 @Composable
-fun PopularMovieImage(
-    movie: Movie,
+fun topRatedTvSeriesImage(
+    tvSeries: TvSeries,
     modifier: Modifier
 ) {
-    val posterPath = BASE_BACKDROP_IMAGE_URL + movie.posterPath
+    val posterPath = BASE_BACKDROP_IMAGE_URL + tvSeries.posterPath
     CoilImage(
         imageModel = posterPath,
         shimmerParams = ShimmerParams(
@@ -46,7 +46,7 @@ fun PopularMovieImage(
 
             ),
         modifier = Modifier
-            .size(70.dp, 100.dp)
+            .size(80.dp, 110.dp)
             .clip(RoundedCornerShape(10.dp)),
         failure = {
             Box(
@@ -68,16 +68,18 @@ fun PopularMovieImage(
         previewPlaceholder = R.drawable.image_not_available,
         contentScale = ContentScale.Crop,
         circularReveal = CircularReveal(duration = 1000),
-
-        )
+    )
 }
 
 @Composable
-fun popularMovieRating(movie: Movie, modifier: Modifier) {
+fun topRatedTvSeriesRating(
+    tvSeries: TvSeries,
+    modifier: Modifier
+) {
     val shape = RoundedCornerShape(12.dp)
     Box(
         modifier = Modifier
-            .size(50.dp, 20.dp)
+            .size(60.dp, 24.dp)
             .clip(shape)
             .background(RatingBarColor),
         Alignment.Center
@@ -97,7 +99,7 @@ fun popularMovieRating(movie: Movie, modifier: Modifier) {
                     .padding(1.dp)
             )
             Text(
-                text = "${movie.voteAvarage}",
+                text = "${tvSeries.voteAvarage}",
                 fontSize = 10.sp,
                 color = Color.White
             )
@@ -106,134 +108,61 @@ fun popularMovieRating(movie: Movie, modifier: Modifier) {
 }
 
 @Composable
-fun PopularMovieTitle(movie: Movie, modifier: Modifier) {
+fun topRatedTvSeriesTitle(
+    tvSeries: TvSeries,
+    modifier: Modifier
+) {
     Text(
-        text = "${movie.originalTitle}",
+        text = "${tvSeries.name}",
         style = TextStyle(fontSize = 20.sp),
         color = Color.Black,
-        fontWeight = FontWeight.Bold
+        fontWeight = FontWeight.Bold,
+        maxLines = 1
     )
 }
 
+
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun PopularMoviesItem(
-    movie: Movie,
+fun topRatedTvSeriesItem(
+    tvSeries: TvSeries,
     modifier: Modifier,
     onClick: () -> Unit,
 ) {
     Card(
-        modifier = Modifier
-            .fillMaxWidth(),
+        modifier = Modifier.size(height = 200.dp, width = 120.dp),
         shape = RoundedCornerShape(corner = CornerSize(10.dp)),
         onClick = onClick
     )
     {
-        Row(
-            modifier = Modifier.padding(4.dp)
+        Column(
+            modifier = Modifier.padding(4.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            PopularMovieImage(
-                movie = movie,
+            topRatedTvSeriesImage(
+                tvSeries = tvSeries,
                 modifier = modifier
-                    .padding(start = 8.dp, top = 8.dp)
             )
-            Column(
-                modifier = Modifier
-                    .padding(start = 12.dp)
-            ) {
-                PopularMovieTitle(
-                    movie = movie,
-                    modifier = modifier
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                popularMovieRating(movie = movie, modifier = modifier)
-                Spacer(modifier = Modifier.height(8.dp))
-                showReleaseDate(movie = movie, modifier = modifier)
-            }
+            topRatedTvSeriesTitle(tvSeries = tvSeries, modifier = modifier)
+            Spacer(modifier = Modifier.height(8.dp))
+            topRatedTvSeriesRating(tvSeries = tvSeries, modifier = modifier)
         }
     }
 }
 
-
-@Composable
-fun showReleaseDate(movie: Movie, modifier: Modifier) {
-    Row(
-    ) {
-        Image(
-            modifier = Modifier,
-            painter = painterResource(id = R.drawable.calendar),
-            contentDescription = null,
-        )
-        Text(
-            modifier = Modifier
-                .padding(start = 4.dp)
-                .padding(vertical = 4.dp),
-            text = "${movie.releaseDate}",
-            fontSize = 12.sp
-        )
-    }
-}
-
-/*
-@Preview
-@Composable
-fun previewReleaseDate() {
-    showRealeseDate(
-        movie =
-        Movie(
-            1,
-            "Joker",
-            "asd",
-            5.3,
-            "2022-08-11"
-        ),
-        modifier = Modifier
-    )
-}
-*/
-
-// Bir sürü paramatre eklendi preview yaparkan hata alabilirsin parametreleri kontrol et açmadan önce
-
-/*
 @Preview
 @Composable
 fun preview() {
-    PopularMoviesItem(
-        movie = Movie(
+    topRatedTvSeriesItem(
+        tvSeries = TvSeries(
             1,
-            "Joker",
-            "asd",
+            "Fight Club",
             5.3,
-            "2022-08-11"
-        ), modifier = Modifier
-    )
-}
-
-
-@Preview
-@Composable
-fun PreviewPopularMovieTitle() {
-    PopularMovieTitle(movie = Movie(1, "Joker", "asd", 5.3), modifier = Modifier)
-}
-
-@Preview
-@Composable
-fun PreviewRating() {
-    Rating(movie = Movie(1, "Joker", "asd", 5.3), modifier = Modifier)
-}
-
-@Preview
-@Composable
-fun PreviewImage() {
-    PopularMovieImage(
-        movie = Movie(
-            1,
-            "Joker",
-            "/v28T5F1IygM8vXWZIycfNEm3xcL.jpg",
-            5.4
+            "/z0iCS5Znx7TeRwlYSd4c01Z0lFx.jpg",
+            "2018-07-08"
         ),
         modifier = Modifier
-    )
-}
-*/
+    ) {
 
+    }
+}

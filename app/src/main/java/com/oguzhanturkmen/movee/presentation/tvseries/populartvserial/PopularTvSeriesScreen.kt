@@ -28,7 +28,7 @@ import kotlin.math.absoluteValue
 @Composable
 fun popularTvSerialsHorizontalPager(
     modifier: Modifier = Modifier.padding(top = 12.dp),
-    viewmodel: PopularTvSerialViewModel = hiltViewModel(),
+    viewmodel: PopularTvSeriesViewModel = hiltViewModel(),
     onClick: (movieId: Int) -> Unit
 ) {
     val state = viewmodel.state.value

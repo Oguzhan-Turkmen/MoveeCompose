@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.components.gradient
+import com.oguzhanturkmen.movee.presentation.topratedtvseries.TopRatedTvSeriesScreen
 import com.oguzhanturkmen.movee.presentation.tvseries.populartvserial.popularTvSerialsHorizontalPager
 
 @Composable
@@ -47,9 +48,17 @@ fun TvSeriesScreen(
                     fontWeight = FontWeight.Bold
                 )
                 popularTvSerialsHorizontalPager(
-                    onClick = {}
+                    onClick = { TODO("ONCLIK TANIMLAA") }
                 )
-
+                Text(
+                    modifier = Modifier
+                        .padding(start = 32.dp),
+                    text = "Top Rated",
+                    style = TextStyle(fontSize = 24.sp),
+                    color = Color.Black,
+                    fontWeight = FontWeight.Bold
+                )
+                TopRatedTvSeriesScreen(navController = navController)
             }
         }
     }
