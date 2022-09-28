@@ -5,7 +5,7 @@ import com.oguzhanturkmen.movee.domain.model.series.TvSeries
 import com.oguzhanturkmen.movee.domain.util.DomainMapper
 import javax.inject.Inject
 
-class TvSeriesMapper @Inject constructor() : DomainMapper<TvSeriesDto, TvSeries> {
+class TvSeriesDtoMapper @Inject constructor() : DomainMapper<TvSeriesDto, TvSeries> {
     override fun mapToDomainModel(model: TvSeriesDto): TvSeries {
         return TvSeries(
             id = model.id,

@@ -1,4 +1,4 @@
-package com.oguzhanturkmen.movee.presentation.moviedetail
+package com.oguzhanturkmen.movee.presentation.tvseriesdetail
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -7,33 +7,36 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.oguzhanturkmen.movee.presentation.moviedetail.components.*
-
+import com.oguzhanturkmen.movee.presentation.tvseriesdetail.components.*
 
 @Composable
-fun MovieDetailScreen(
-    viewModel: MovieDetailViewModel = hiltViewModel(),
+fun TvSeriesDetailScreen(
+    viewModel: TvSeriesDetailViewModel = hiltViewModel(),
 ) {
     val state = viewModel.state.value
-    Box(modifier = Modifier.fillMaxSize()) {
-        state.movie?.let { movieDetail ->
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = 64.dp)
+    ) {
+        state.tvSeries?.let { tvSeriesDetail ->
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
             ) {
-                movieDetailImage(movieDetail = movieDetail)
+                tvSeriesDetailImage(tvSeriesDetail = tvSeriesDetail)
                 Column(
                     Modifier.padding(start = 32.dp, top = 8.dp, end = 32.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    movieDetailRating(movieDetail = movieDetail)
-                    movieDetailTitle(movieDetail = movieDetail)
+                    tvSeriesDetailRating(tvSeriesDetail = tvSeriesDetail)
+                    tvSeriesDetailTitle(tvSeriesDetail = tvSeriesDetail)
                     Row(horizontalArrangement = Arrangement.spacedBy(32.dp)) {
-                        movieDetailRunTime(movieDetail = movieDetail)
-                        movieDetailReleaseDate(movieDetail = movieDetail)
+                        tvSeriesDetilFirstAirDate(tvSeriesDetail = tvSeriesDetail)
+                        tvSeriesDetailEpisodeAndSeasonNumber(tvSeriesDetail = tvSeriesDetail)
                     }
-                    movieDetailOverview(movieDetail = movieDetail)
+                    tvSeriesDetailOverview(tvSeriesDetail = tvSeriesDetail)
                 }
             }
         }

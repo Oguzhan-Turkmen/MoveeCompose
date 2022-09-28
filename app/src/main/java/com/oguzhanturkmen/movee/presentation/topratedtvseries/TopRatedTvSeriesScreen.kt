@@ -17,7 +17,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.oguzhanturkmen.movee.presentation.navigation.TvSeriesScreen
 import com.oguzhanturkmen.movee.presentation.topratedtvseries.components.topRatedTvSeriesItem
+
 
 @Composable
 fun TopRatedTvSeriesScreen(
@@ -36,7 +38,9 @@ fun TopRatedTvSeriesScreen(
                 topRatedTvSeriesItem(
                     tvSeries = tvseries,
                     modifier = Modifier,
-                    onClick = { TODO("ONCLICK TANIMLA") }
+                    onClick = {
+                        navController.navigate(TvSeriesScreen.TvSeriesDetailScreen.route + "${tvseries.id}")
+                    }
                 )
             }
         }

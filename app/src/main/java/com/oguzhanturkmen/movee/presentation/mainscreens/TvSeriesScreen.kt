@@ -18,9 +18,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.oguzhanturkmen.movee.presentation.navigation.TvSeriesScreen
 import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.components.gradient
 import com.oguzhanturkmen.movee.presentation.topratedtvseries.TopRatedTvSeriesScreen
 import com.oguzhanturkmen.movee.presentation.tvseries.populartvserial.popularTvSerialsHorizontalPager
+
 
 @Composable
 fun TvSeriesScreen(
@@ -38,7 +40,9 @@ fun TvSeriesScreen(
                         size = Size(500.dp.toPx(), 250.dp.toPx())
                     )
                 }) {
-            Column {
+            Column(
+                //modifier = Modifier.verticalScroll(rememberScrollState())
+            ) {
                 Text(
                     modifier = Modifier
                         .padding(top = 32.dp, start = 32.dp),
@@ -48,7 +52,7 @@ fun TvSeriesScreen(
                     fontWeight = FontWeight.Bold
                 )
                 popularTvSerialsHorizontalPager(
-                    onClick = { TODO("ONCLIK TANIMLAA") }
+                    onClick = { navController.navigate(TvSeriesScreen.TvSeriesDetailScreen.route + it) }
                 )
                 Text(
                     modifier = Modifier

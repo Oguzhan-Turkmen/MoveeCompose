@@ -1,4 +1,4 @@
-package com.oguzhanturkmen.movee.presentation.tvseries.populartvserial.components
+package com.oguzhanturkmen.movee.presentation.tvseriesdetail.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -19,18 +19,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.common.Constants
-import com.oguzhanturkmen.movee.domain.model.series.TvSeries
+import com.oguzhanturkmen.movee.domain.model.seriesdetail.TvSeriesDetail
 import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.coil.CoilImage
 
 @Composable
-fun popularTvSeriesImage(
-    tvSeries: TvSeries,
-    modifier: Modifier
+fun tvSeriesDetailImage(
+    tvSeriesDetail: TvSeriesDetail
 ) {
-    val posterPath = Constants.BASE_BACKDROP_IMAGE_URL + tvSeries.posterPath
+    val posterPath = Constants.BASE_BACKDROP_IMAGE_URL + tvSeriesDetail.backdropPath
     CoilImage(
         imageModel = posterPath,
         shimmerParams = ShimmerParams(
@@ -39,11 +38,12 @@ fun popularTvSeriesImage(
             durationMillis = 500,
             dropOff = 0.65F,
             tilt = 20F,
+        ),
 
-            ),
         modifier = Modifier
-            .size(200.dp, 300.dp)
-            .clip(RoundedCornerShape(12.dp)),
+            .fillMaxWidth()
+            .height(300.dp),
+        contentScale = ContentScale.Crop,
         failure = {
             Box(
                 contentAlignment = Alignment.Center,
@@ -62,18 +62,16 @@ fun popularTvSeriesImage(
             }
         },
         previewPlaceholder = R.drawable.image_not_available,
-        contentScale = ContentScale.Crop,
         circularReveal = CircularReveal(duration = 1000),
-
-        )
+    )
 }
 
 @Composable
-fun popularTvSeriesRating(tvSeries: TvSeries, modifier: Modifier) {
+fun tvSeriesDetailRating(tvSeriesDetail: TvSeriesDetail) {
     val shape = RoundedCornerShape(12.dp)
     Box(
         modifier = Modifier
-            .size(61.dp, 28.dp)
+            .size(66.dp, 28.dp)
             .clip(shape)
             .background(RatingBarColor),
         Alignment.Center
@@ -89,11 +87,11 @@ fun popularTvSeriesRating(tvSeries: TvSeries, modifier: Modifier) {
                 painter = painterResource(id = R.drawable.star),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(20.dp, 20.dp)
+                    .size(16.dp, 16.dp)
                     .padding(1.dp)
             )
             Text(
-                text = "${tvSeries.voteAvarage}",
+                text = "%.1f".format(tvSeriesDetail.voteAverage),
                 fontSize = 14.sp,
                 color = Color.White
             )
@@ -102,13 +100,64 @@ fun popularTvSeriesRating(tvSeries: TvSeries, modifier: Modifier) {
 }
 
 @Composable
-fun popularTvSeriesTitle(tvSeries: TvSeries, modifier: Modifier) {
-    Text(
-        text = "${tvSeries.name}",
-        style = TextStyle(fontSize = 20.sp),
-        color = Color.Black,
-        fontWeight = FontWeight.Bold,
-        maxLines = 1
+fun tvSeriesDetailEpisodeAndSeasonNumber(tvSeriesDetail: TvSeriesDetail) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically
 
+    ) {
+        Image(
+            modifier = Modifier.size(24.dp, 24.dp),
+            painter = painterResource(id = R.drawable.clock),
+            contentDescription = null,
+        )
+        Text(
+            modifier = Modifier
+                .padding(start = 4.dp)
+                .padding(vertical = 4.dp),
+            text = "${tvSeriesDetail.numberOfSeasons} Seasons / ${tvSeriesDetail.numberOfEpisodes} Episodes",
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Bold
+        )
+    }
+}
+
+@Composable
+fun tvSeriesDetailTitle(tvSeriesDetail: TvSeriesDetail) {
+    Text(
+        text = "${tvSeriesDetail.name}",
+        style = TextStyle(fontSize = 28.sp),
+        color = Color.Black,
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun tvSeriesDetilFirstAirDate(tvSeriesDetail: TvSeriesDetail) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(
+            modifier = Modifier.size(24.dp, 24.dp),
+            painter = painterResource(id = R.drawable.calendar),
+            contentDescription = null,
+        )
+        Text(
+            modifier = Modifier
+                .padding(start = 4.dp)
+                .padding(vertical = 4.dp),
+            text = "${tvSeriesDetail.firstAirDate}",
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Bold
+        )
+    }
+}
+
+@Composable
+fun tvSeriesDetailOverview(tvSeriesDetail: TvSeriesDetail) {
+    Text(
+        text = "${tvSeriesDetail.overview}",
+        fontSize = 16.sp,
+        fontWeight = FontWeight.SemiBold,
+        modifier = Modifier.padding(top = 8.dp)
     )
 }
