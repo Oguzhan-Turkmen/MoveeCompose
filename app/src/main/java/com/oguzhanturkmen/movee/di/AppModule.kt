@@ -53,9 +53,18 @@ object AppModule {
         api: ApiService,
         movieDtoMapper: MovieDtoMapper,
         movieDetailDtoMapper: MovieDetailDtoMapper,
-        creditsDtoMapper: CreditsDtoMapper
+        creditsDtoMapper: CreditsDtoMapper,
+        personDtoMapper: PersonDtoMapper,
+        personCreditsDtoMapper: PersonCreditsDtoMapper,
     ): MovieRepository {
-        return MovieRepositoryImpl(api, movieDtoMapper, movieDetailDtoMapper, creditsDtoMapper)
+        return MovieRepositoryImpl(
+            api,
+            movieDtoMapper,
+            movieDetailDtoMapper,
+            creditsDtoMapper,
+            personDtoMapper,
+            personCreditsDtoMapper
+        )
     }
 
     @Singleton

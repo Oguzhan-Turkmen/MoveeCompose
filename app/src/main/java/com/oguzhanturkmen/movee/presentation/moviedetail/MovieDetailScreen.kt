@@ -10,12 +10,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.oguzhanturkmen.movee.presentation.moviedetail.components.*
+import com.oguzhanturkmen.movee.presentation.navigation.MoviesScreen
 
 
 @Composable
 fun MovieDetailScreen(
     viewModel: MovieDetailViewModel = hiltViewModel(),
+    navController: NavController
 ) {
     val movieState = viewModel.state.value
     val castState = viewModel.moviecreditstate.value
@@ -47,7 +50,12 @@ fun MovieDetailScreen(
                     LazyRow(modifier = Modifier) {
                         items(castState.movieCredit) { cast ->
                             Column() {
-                                castItem(cast = cast)
+                                castItem(
+                                    cast = cast,
+                                    onClick = {
+                                        navController.navigate(MoviesScreen.PersonDetailScreen.route + "${cast.id}")
+                                    }
+                                )
                             }
                         }
                     }

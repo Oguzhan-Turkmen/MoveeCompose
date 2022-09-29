@@ -8,6 +8,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -67,7 +68,7 @@ fun movieDetailImage(
         },
         previewPlaceholder = R.drawable.image_not_available,
         circularReveal = CircularReveal(duration = 1000),
-        )
+    )
 }
 
 @Composable
@@ -166,16 +167,21 @@ fun movieDetailOverview(movieDetail: MovieDetail) {
     )
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun castItem(cast: Cast) {
+fun castItem(
+    cast: Cast,
+    onClick: () -> Unit,
+) {
     Card(
         modifier = Modifier,
         shape = RoundedCornerShape(corner = CornerSize(10.dp)),
+        onClick = onClick
     ) {
         Column(
             modifier = Modifier.padding(end = 8.dp, top = 2.dp, bottom = 2.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(4.dp)
+            verticalArrangement = Arrangement.spacedBy(6.dp)
         ) {
             castImage(cast = cast)
             castName(cast = cast)

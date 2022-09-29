@@ -1,5 +1,7 @@
 package com.oguzhanturkmen.movee.data.remote.dto.persondto
 
+import com.google.gson.annotations.SerializedName
+
 data class PersonDto(
     val adult: Boolean,
     val also_known_as: List<String>,
@@ -9,10 +11,14 @@ data class PersonDto(
     val gender: Int,
     val homepage: Any,
     val id: Int,
-    val imdb_id: String,
-    val known_for_department: String,
+    @SerializedName("imdb_id")
+    val imdbId: String,
+    @SerializedName("known_for_department")
+    val knownForDepartment: String,
     val name: String,
-    val place_of_birth: String,
+    @SerializedName("place_of_birth")
+    val placeOfBirth: String,
     val popularity: Double,
-    val profile_path: String
+    @SerializedName("profile_path")
+    val profilePath: String?
 )
