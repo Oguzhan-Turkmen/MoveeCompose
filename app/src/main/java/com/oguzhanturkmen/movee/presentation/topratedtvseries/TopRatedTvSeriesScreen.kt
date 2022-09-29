@@ -31,7 +31,7 @@ fun TopRatedTvSeriesScreen(
         LazyVerticalGrid(
             columns = GridCells.Adaptive(minSize = 128.dp),
             modifier = Modifier
-                .padding(start = 32.dp, end = 32.dp, bottom = 52.dp),
+                .padding(start = 32.dp, end = 32.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(state.topRatedTvSerials) { tvseries ->
