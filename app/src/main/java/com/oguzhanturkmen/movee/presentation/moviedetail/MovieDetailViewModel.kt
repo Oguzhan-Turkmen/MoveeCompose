@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.oguzhanturkmen.movee.common.Constants
 import com.oguzhanturkmen.movee.common.Resource
+import com.oguzhanturkmen.movee.domain.useCase.GetMovieCreditsUseCase
 import com.oguzhanturkmen.movee.domain.useCase.GetMovieDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -16,16 +17,42 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
     private val getMovieDetailUseCase: GetMovieDetailUseCase,
+    private val getMovieCreditsUseCase: GetMovieCreditsUseCase,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private val _state = mutableStateOf(MovieDetailState())
     val state: State<MovieDetailState> = _state
 
+    private val _moviecreditstate = mutableStateOf(MovieCreditState())
+    val moviecreditstate: State<MovieCreditState> = _moviecreditstate
+
     init {
         savedStateHandle.get<Int>(Constants.PARAM_MOVIE_ID)?.let { movieId ->
             getMovieDetail(movieId)
         }
+        savedStateHandle.get<Int>(Constants.PARAM_MOVIE_ID)?.let { movieId ->
+            getMovieCredit(movieId)
+        }
+    }
+
+    private fun getMovieCredit(movieId: Int) {
+        getMovieCreditsUseCase(movieId = movieId).onEach { result ->
+            when (result) {
+                is Resource.Success -> {
+                    _moviecreditstate.value =
+                        MovieCreditState(movieCredit = result.data ?: emptyList())
+                }
+                is Resource.Error -> {
+                    _moviecreditstate.value = MovieCreditState(
+                        error = result.statusMessage ?: "An unexpected error occured"
+                    )
+                }
+                is Resource.Loading -> {
+                    _moviecreditstate.value = MovieCreditState(isLoading = true)
+                }
+            }
+        }.launchIn(viewModelScope)
     }
 
     private fun getMovieDetail(movieId: Int) {
@@ -45,4 +72,5 @@ class MovieDetailViewModel @Inject constructor(
             }
         }.launchIn(viewModelScope)
     }
+
 }

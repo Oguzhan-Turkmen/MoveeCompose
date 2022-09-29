@@ -4,7 +4,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.common.Constants
+import com.oguzhanturkmen.movee.domain.model.credits.Cast
 import com.oguzhanturkmen.movee.domain.model.movieDetail.MovieDetail
 import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
 import com.skydoves.landscapist.CircularReveal
@@ -159,6 +163,73 @@ fun movieDetailOverview(movieDetail: MovieDetail) {
         fontSize = 16.sp,
         fontWeight = FontWeight.SemiBold,
         modifier = Modifier.padding(top = 8.dp)
+    )
+}
+
+@Composable
+fun castItem(cast: Cast) {
+    Card(
+        modifier = Modifier,
+        shape = RoundedCornerShape(corner = CornerSize(10.dp)),
+    ) {
+        Column(
+            modifier = Modifier.padding(end = 8.dp, top = 2.dp, bottom = 2.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            castImage(cast = cast)
+            castName(cast = cast)
+        }
+    }
+}
+
+@Composable
+fun castImage(cast: Cast) {
+    val posterPath = Constants.BASE_BACKDROP_IMAGE_URL + cast.profilePath
+    CoilImage(
+        imageModel = posterPath,
+        shimmerParams = ShimmerParams(
+            baseColor = Color.White,
+            highlightColor = RatingBarColor,
+            durationMillis = 500,
+            dropOff = 0.65F,
+            tilt = 20F,
+        ),
+
+        modifier = Modifier
+            .clip(CircleShape)
+            .size(70.dp),
+        contentScale = ContentScale.FillBounds,
+        failure = {
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .border(
+                        width = 1.dp,
+                        color = Color.LightGray,
+                        shape = RoundedCornerShape(8.dp)
+                    )
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.image_not_available),
+                    contentDescription = "no image"
+                )
+            }
+        },
+        previewPlaceholder = R.drawable.image_not_available,
+        circularReveal = CircularReveal(duration = 1000),
+    )
+}
+
+@Composable
+fun castName(cast: Cast) {
+    Text(
+        text = "${cast.name}",
+        style = TextStyle(fontSize = 12.sp),
+        color = Color.Black,
+        fontWeight = FontWeight.Bold,
+        maxLines = 1
     )
 }
 

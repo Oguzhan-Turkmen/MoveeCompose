@@ -145,8 +145,8 @@ fun nowPlayingMoviesHorizontalPager(
     if (state.isLoading) {
         CircularProgressIndicator(modifier = Modifier)
     }
-
 }
+
 
 //
 //@OptIn(ExperimentalPagerApi::class)

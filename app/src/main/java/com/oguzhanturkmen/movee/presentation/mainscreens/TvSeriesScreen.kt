@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.oguzhanturkmen.movee.presentation.navigation.TvSeriesScreen
-import com.oguzhanturkmen.movee.presentation.nowPlayingMovie.components.gradient
 import com.oguzhanturkmen.movee.presentation.topratedtvseries.TopRatedTvSeriesScreen
 import com.oguzhanturkmen.movee.presentation.tvseries.populartvserial.popularTvSerialsHorizontalPager
 

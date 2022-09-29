@@ -12,8 +12,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            //Navigation()
             MainScreen()
+            //val navController = rememberNavController( )
+            //nestedScreen(navController = navController)
         }
     }
 }

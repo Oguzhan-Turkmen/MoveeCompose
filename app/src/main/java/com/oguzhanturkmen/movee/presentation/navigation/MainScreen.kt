@@ -1,7 +1,10 @@
 package com.oguzhanturkmen.movee.presentation.navigation
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -11,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
@@ -24,8 +28,14 @@ fun MainScreen() {
         bottomBar =
         { BottomBar(navController = navController) },
         modifier = Modifier.background(Color.White)
-    ) {
-        BottomNavGraph(navController = navController)
+    ) { innerPadding ->
+        Box(
+            modifier = Modifier
+                .padding(PaddingValues(0.dp, 0.dp, 0.dp, innerPadding.calculateBottomPadding()))
+        ) {
+            BottomNavGraph(navController = navController)
+        }
+
     }
 }
 

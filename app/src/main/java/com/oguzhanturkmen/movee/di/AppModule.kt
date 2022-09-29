@@ -1,10 +1,7 @@
 package com.oguzhanturkmen.movee.di
 
 import com.oguzhanturkmen.movee.common.Constants.BASE_URL
-import com.oguzhanturkmen.movee.data.mapper.MovieDetailDtoMapper
-import com.oguzhanturkmen.movee.data.mapper.MovieDtoMapper
-import com.oguzhanturkmen.movee.data.mapper.TvSeriesDetailDtoMapper
-import com.oguzhanturkmen.movee.data.mapper.TvSeriesDtoMapper
+import com.oguzhanturkmen.movee.data.mapper.*
 import com.oguzhanturkmen.movee.data.remote.ApiService
 import com.oguzhanturkmen.movee.data.repository.MovieRepositoryImpl
 import com.oguzhanturkmen.movee.data.repository.TvSeriesRepositoryImpl
@@ -55,9 +52,10 @@ object AppModule {
     fun provideMovieRepository(
         api: ApiService,
         movieDtoMapper: MovieDtoMapper,
-        movieDetailDtoMapper: MovieDetailDtoMapper
+        movieDetailDtoMapper: MovieDetailDtoMapper,
+        creditsDtoMapper: CreditsDtoMapper
     ): MovieRepository {
-        return MovieRepositoryImpl(api, movieDtoMapper, movieDetailDtoMapper)
+        return MovieRepositoryImpl(api, movieDtoMapper, movieDetailDtoMapper, creditsDtoMapper)
     }
 
     @Singleton
