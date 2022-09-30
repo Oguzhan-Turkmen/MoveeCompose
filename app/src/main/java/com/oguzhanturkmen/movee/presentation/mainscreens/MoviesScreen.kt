@@ -71,67 +71,57 @@ fun MoviesScreen(
     viewModel: PopularMoviesViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
-    Box(
+    LazyColumn(
         modifier = Modifier
-            .fillMaxSize()
-            .drawBehind {
-                drawRect(
-                    brush = gradient,
-                    topLeft = Offset(x = 0f, y = 0.dp.toPx()),
-                    size = Size(500.dp.toPx(), 250.dp.toPx())
-                )
-            }) {
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        item {
+            Column(modifier = Modifier
+                .fillMaxWidth()
                 .drawBehind {
                     drawRect(
                         brush = gradient,
                         topLeft = Offset(x = 0f, y = 0.dp.toPx()),
                         size = Size(500.dp.toPx(), 250.dp.toPx())
                     )
-                },
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-
-            ) {
-            item {
-                Column(modifier = Modifier.fillMaxWidth()) {
-                    Text(
-                        modifier = Modifier
-                            .padding(top = 32.dp, start = 32.dp),
-                        text = "Movies",
-                        style = TextStyle(fontSize = 34.sp),
-                        color = Color.White,
-                        fontWeight = FontWeight.Bold
-                    )
-                    nowPlayingMoviesHorizontalPager(
-                        onClick = {
-                            navController.navigate(MoviesScreen.MovieDetailScreen.route + it)
-                        })
-                }
-            }
-            item {
+                }) {
                 Text(
                     modifier = Modifier
-                        .padding(start = 32.dp),
-                    text = "Popular",
-                    style = TextStyle(fontSize = 24.sp),
-                    color = Color.Black,
+                        .padding(top = 32.dp, start = 32.dp),
+                    text = "Movies",
+                    style = TextStyle(fontSize = 34.sp),
+                    color = Color.White,
                     fontWeight = FontWeight.Bold
                 )
-            }
-            items(state.popularMovies) { movie ->
-                PopularMoviesItem(
-                    movie = movie,
-                    modifier = Modifier,
+                nowPlayingMoviesHorizontalPager(
                     onClick = {
-                        navController.navigate(MoviesScreen.MovieDetailScreen.route + "${movie.id}")
-                    }
-                )
+                        navController.navigate(MoviesScreen.MovieDetailScreen.route + it)
+                    })
             }
+        }
+        item {
+            Text(
+                modifier = Modifier
+                    .padding(start = 32.dp),
+                text = "Popular",
+                style = TextStyle(fontSize = 24.sp),
+                color = Color.Black,
+                fontWeight = FontWeight.Bold
+            )
+        }
+        items(state.popularMovies) { movie ->
+            PopularMoviesItem(
+                movie = movie,
+                modifier = Modifier,
+                onClick = {
+                    navController.navigate(MoviesScreen.MovieDetailScreen.route + "${movie.id}")
+                }
+            )
         }
     }
 }
+
 
 @Composable
 fun nestedScreen(

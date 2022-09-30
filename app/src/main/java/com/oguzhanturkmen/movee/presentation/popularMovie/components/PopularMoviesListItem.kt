@@ -129,7 +129,7 @@ fun PopularMoviesItem(
             .padding(start = 16.dp, end = 16.dp),
         shape = RoundedCornerShape(corner = CornerSize(10.dp)),
         onClick = onClick,
-
+        elevation = 10.dp
         )
     {
         Row(

@@ -118,9 +118,8 @@ fun topRatedTvSeriesTitle(
         style = TextStyle(fontSize = 20.sp),
         color = Color.Black,
         fontWeight = FontWeight.Bold,
-        overflow = TextOverflow.Ellipsis
-
-
+        overflow = TextOverflow.Ellipsis,
+        maxLines = 1,
     )
 }
 
@@ -134,10 +133,11 @@ fun topRatedTvSeriesItem(
 ) {
     Card(
         modifier = Modifier
-            .size(200.dp, 220.dp)
+            .size(200.dp, 200.dp)
             .padding(start = 16.dp, end = 16.dp),
         shape = RoundedCornerShape(corner = CornerSize(10.dp)),
-        onClick = onClick
+        onClick = onClick,
+        elevation = 10.dp
     )
     {
         Column(

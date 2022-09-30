@@ -72,63 +72,57 @@ fun TvSeriesScreen(
     viewModel: TopRatedTvSeriesViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .drawBehind {
-                drawRect(
-                    brush = gradient,
-                    topLeft = Offset(x = 0f, y = 0.dp.toPx()),
-                    size = Size(500.dp.toPx(), 250.dp.toPx())
-                )
-            }) {
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-
-            ) {
-            item {
-                Column(modifier = Modifier.fillMaxWidth()) {
-                    Text(
-                        modifier = Modifier
-                            .padding(top = 32.dp, start = 32.dp),
-                        text = "Movies",
-                        style = TextStyle(fontSize = 34.sp),
-                        color = Color.White,
-                        fontWeight = FontWeight.Bold
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        item {
+            Column(modifier = Modifier
+                .fillMaxWidth()
+                .drawBehind {
+                    drawRect(
+                        brush = gradient,
+                        topLeft = Offset(x = 0f, y = 0.dp.toPx()),
+                        size = Size(500.dp.toPx(), 250.dp.toPx())
                     )
-                    popularTvSerialsHorizontalPager(
-                        onClick = {
-                            navController.navigate(TvSeriesScreen.TvSeriesDetailScreen.route + it)
-                        })
-                }
-            }
-            item {
+                }) {
                 Text(
                     modifier = Modifier
-                        .padding(start = 32.dp),
-                    text = "Popular",
-                    style = TextStyle(fontSize = 24.sp),
-                    color = Color.Black,
+                        .padding(top = 32.dp, start = 32.dp),
+                    text = "Top Rated",
+                    style = TextStyle(fontSize = 34.sp),
+                    color = Color.White,
                     fontWeight = FontWeight.Bold
                 )
+                popularTvSerialsHorizontalPager(
+                    onClick = {
+                        navController.navigate(TvSeriesScreen.TvSeriesDetailScreen.route + it)
+                    })
             }
-            items(state.topRatedTvSerials.windowed(2, 2, true)) { tvserial ->
-                Row(Modifier.fillMaxWidth()) {
-                    tvserial.forEach { tvseries ->
-                        topRatedTvSeriesItem(
-                            tvSeries = tvseries,
-                            modifier = Modifier,
-                            onClick = {
-                                navController.navigate(TvSeriesScreen.TvSeriesDetailScreen.route + "${tvseries.id}")
-                            }
-                        )
-                    }
-
+        }
+        item {
+            Text(
+                modifier = Modifier
+                    .padding(start = 32.dp),
+                text = "Popular",
+                style = TextStyle(fontSize = 24.sp),
+                color = Color.Black,
+                fontWeight = FontWeight.Bold
+            )
+        }
+        items(state.topRatedTvSerials.windowed(2, 2, true)) { tvserial ->
+            Row(Modifier.fillMaxWidth()) {
+                tvserial.forEach { tvseries ->
+                    topRatedTvSeriesItem(
+                        tvSeries = tvseries,
+                        modifier = Modifier,
+                        onClick = {
+                            navController.navigate(TvSeriesScreen.TvSeriesDetailScreen.route + "${tvseries.id}")
+                        }
+                    )
                 }
-
-
             }
         }
     }
 }
+
