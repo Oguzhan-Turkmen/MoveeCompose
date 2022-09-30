@@ -92,7 +92,7 @@ fun nowPlayingMoviesHorizontalPager(
     val state = viewmodel.state.value
     HorizontalPager(
         count = viewmodel.state.value.nowPlayingMovies.size,
-        contentPadding = PaddingValues(horizontal = 20.dp),
+        contentPadding = PaddingValues(horizontal = 72.dp),
         modifier = modifier,
     ) { page ->
         Column(
@@ -100,7 +100,7 @@ fun nowPlayingMoviesHorizontalPager(
                 .graphicsLayer {
                     val pageOffset = calculateCurrentOffsetForPage(page).absoluteValue
                     lerp(
-                        start = 0.90f,
+                        start = 0.85f,
                         stop = 1f,
                         fraction = 1f - pageOffset.coerceIn(0f, 1f)
                     ).also { scale ->
@@ -110,18 +110,16 @@ fun nowPlayingMoviesHorizontalPager(
                     alpha = lerp(
                         start = 0.5f,
                         stop = 1f,
-                        fraction = 1f - pageOffset.coerceIn(0f, 0f)
+                        fraction = 1f - pageOffset.coerceIn(0f, 1f)
                     )
                 }
                 .clickable(
                     indication = null,
                     interactionSource = remember { MutableInteractionSource() }) {
                     onClick(state.nowPlayingMovies[page].id)
-                }
-                .fillMaxWidth()
-                .aspectRatio(1f),
+                },
             horizontalAlignment = Alignment.CenterHorizontally,
-            //verticalArrangement = Arrangement.spacedBy(4.dp)
+            verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             nowPlayingMovieImage(
                 movie = state.nowPlayingMovies[page],

@@ -28,7 +28,8 @@ fun PersonDetailScreen(
             LazyColumn(
                 modifier = Modifier
                     .padding(start = 32.dp, top = 8.dp, end = 32.dp)
-                    .fillMaxSize()
+                    .fillMaxSize(),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
 
             ) {
                 item {

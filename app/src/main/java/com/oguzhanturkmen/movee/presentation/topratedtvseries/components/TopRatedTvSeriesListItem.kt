@@ -18,6 +18,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -110,14 +111,16 @@ fun topRatedTvSeriesRating(
 @Composable
 fun topRatedTvSeriesTitle(
     tvSeries: TvSeries,
-    modifier: Modifier
 ) {
     Text(
+        modifier = Modifier,
         text = "${tvSeries.name}",
         style = TextStyle(fontSize = 20.sp),
         color = Color.Black,
         fontWeight = FontWeight.Bold,
-        maxLines = 1
+        overflow = TextOverflow.Ellipsis
+
+
     )
 }
 
@@ -130,20 +133,22 @@ fun topRatedTvSeriesItem(
     onClick: () -> Unit,
 ) {
     Card(
-        modifier = Modifier.size(height = 200.dp, width = 120.dp),
+        modifier = Modifier
+            .size(200.dp, 220.dp)
+            .padding(start = 16.dp, end = 16.dp),
         shape = RoundedCornerShape(corner = CornerSize(10.dp)),
         onClick = onClick
     )
     {
         Column(
-            modifier = Modifier.padding(4.dp),
+            modifier = Modifier.padding(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             topRatedTvSeriesImage(
                 tvSeries = tvSeries,
                 modifier = modifier
             )
-            topRatedTvSeriesTitle(tvSeries = tvSeries, modifier = modifier)
+            topRatedTvSeriesTitle(tvSeries = tvSeries)
             Spacer(modifier = Modifier.height(8.dp))
             topRatedTvSeriesRating(tvSeries = tvSeries, modifier = modifier)
         }

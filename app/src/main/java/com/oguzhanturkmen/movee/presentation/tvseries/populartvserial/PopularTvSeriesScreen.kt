@@ -2,7 +2,10 @@ package com.oguzhanturkmen.movee.presentation.tvseries.populartvserial
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -34,7 +37,7 @@ fun popularTvSerialsHorizontalPager(
     val state = viewmodel.state.value
     HorizontalPager(
         count = viewmodel.state.value.popularTvSerials.size,
-        contentPadding = PaddingValues(horizontal = 20.dp),
+        contentPadding = PaddingValues(horizontal = 64.dp),
         modifier = modifier,
     ) { page ->
         Column(
@@ -59,9 +62,7 @@ fun popularTvSerialsHorizontalPager(
                     indication = null,
                     interactionSource = remember { MutableInteractionSource() }) {
                     onClick(state.popularTvSerials[page].id)
-                }
-                .fillMaxWidth()
-                .aspectRatio(1f),
+                },
             horizontalAlignment = Alignment.CenterHorizontally,
             //verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {

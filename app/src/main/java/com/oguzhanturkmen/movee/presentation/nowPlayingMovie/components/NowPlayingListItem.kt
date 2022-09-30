@@ -160,7 +160,8 @@ fun nowPlayingMovieTitle(movie: Movie, modifier: Modifier) {
         text = "${movie.originalTitle}",
         style = TextStyle(fontSize = 20.sp),
         color = Color.Black,
-        fontWeight = FontWeight.Bold
+        fontWeight = FontWeight.Bold,
+        maxLines = 1
     )
 }
 
