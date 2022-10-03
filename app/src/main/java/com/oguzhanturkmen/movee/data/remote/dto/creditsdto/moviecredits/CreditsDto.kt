@@ -1,4 +1,4 @@
-package com.oguzhanturkmen.movee.data.remote.dto.creditsdto
+package com.oguzhanturkmen.movee.data.remote.dto.creditsdto.moviecredits
 
 data class CreditsDto(
     val cast: List<CastDto>,

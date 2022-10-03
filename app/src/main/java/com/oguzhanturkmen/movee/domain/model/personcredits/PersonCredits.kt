@@ -6,4 +6,4 @@ data class PersonCredits(
     val posterPath: String?,
     val voteAverage: Double,
     val releaseDate: String?,
-)
+    )

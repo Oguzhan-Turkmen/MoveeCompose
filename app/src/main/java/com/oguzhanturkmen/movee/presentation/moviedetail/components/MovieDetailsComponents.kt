@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.common.Constants
-import com.oguzhanturkmen.movee.domain.model.credits.Cast
+import com.oguzhanturkmen.movee.domain.model.credits.MovieCast
 import com.oguzhanturkmen.movee.domain.model.movieDetail.MovieDetail
 import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
 import com.skydoves.landscapist.CircularReveal
@@ -169,28 +169,29 @@ fun movieDetailOverview(movieDetail: MovieDetail) {
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun castItem(
-    cast: Cast,
+fun movieCastItem(
+    cast: MovieCast,
     onClick: () -> Unit,
 ) {
     Card(
         modifier = Modifier,
         shape = RoundedCornerShape(corner = CornerSize(10.dp)),
-        onClick = onClick
+        onClick = onClick,
+        elevation = 10.dp
     ) {
         Column(
             modifier = Modifier.padding(end = 8.dp, top = 2.dp, bottom = 2.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(6.dp)
         ) {
-            castImage(cast = cast)
-            castName(cast = cast)
+            movieCastImage(cast = cast)
+            movieCastName(cast = cast)
         }
     }
 }
 
 @Composable
-fun castImage(cast: Cast) {
+fun movieCastImage(cast: MovieCast) {
     val posterPath = Constants.BASE_BACKDROP_IMAGE_URL + cast.profilePath
     CoilImage(
         imageModel = posterPath,
@@ -201,7 +202,6 @@ fun castImage(cast: Cast) {
             dropOff = 0.65F,
             tilt = 20F,
         ),
-
         modifier = Modifier
             .clip(CircleShape)
             .size(70.dp),
@@ -229,7 +229,7 @@ fun castImage(cast: Cast) {
 }
 
 @Composable
-fun castName(cast: Cast) {
+fun movieCastName(cast: MovieCast) {
     Text(
         text = "${cast.name}",
         style = TextStyle(fontSize = 12.sp),

@@ -1,7 +1,8 @@
 package com.oguzhanturkmen.movee.data.remote
 
 import com.oguzhanturkmen.movee.common.Constants.API_KEY
-import com.oguzhanturkmen.movee.data.remote.dto.creditsdto.CreditsDto
+import com.oguzhanturkmen.movee.data.remote.dto.creditsdto.moviecredits.CreditsDto
+import com.oguzhanturkmen.movee.data.remote.dto.creditsdto.tvseriescredits.TvSeriesCreditDto
 import com.oguzhanturkmen.movee.data.remote.dto.movieDetailDto.MovieDetailDto
 import com.oguzhanturkmen.movee.data.remote.dto.moviedto.MoviesDto
 import com.oguzhanturkmen.movee.data.remote.dto.personcredits.PersonCreditsDto
@@ -71,4 +72,10 @@ interface ApiService {
         @Path("personId") personId: Int,
         @Query("api_key") apiKey: String = API_KEY
     ): PersonCreditsDto
+
+    @GET("tv/{tvId}/credits")
+    suspend fun getTvSeriesCredits(
+        @Path("tvId") tvId: Int,
+        @Query("api_key") apiKey: String = API_KEY
+    ): TvSeriesCreditDto
 }

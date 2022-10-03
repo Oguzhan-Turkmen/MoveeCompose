@@ -2,7 +2,7 @@ package com.oguzhanturkmen.movee.data.repository
 
 import com.oguzhanturkmen.movee.data.mapper.*
 import com.oguzhanturkmen.movee.data.remote.ApiService
-import com.oguzhanturkmen.movee.domain.model.credits.Cast
+import com.oguzhanturkmen.movee.domain.model.credits.MovieCast
 import com.oguzhanturkmen.movee.domain.model.movie.Movie
 import com.oguzhanturkmen.movee.domain.model.movieDetail.MovieDetail
 import com.oguzhanturkmen.movee.domain.model.person.Person
@@ -15,7 +15,7 @@ class MovieRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
     private val movieDtoMapper: MovieDtoMapper,
     private val movieDetailDtoMapper: MovieDetailDtoMapper,
-    private val creditsDtoMapper: CreditsDtoMapper,
+    private val creditsDtoMapper: MovieCreditsDtoMapper,
     private val personDtoMapper: PersonDtoMapper,
     private val personCreditsDtoMapper: PersonCreditsDtoMapper
 ):MovieRepository {
@@ -31,7 +31,7 @@ class MovieRepositoryImpl @Inject constructor(
         return movieDetailDtoMapper.mapToDomainModel(apiService.getMovieDetail(movieId))
     }
 
-    override suspend fun getMovieCredits(movieId: Int): List<Cast> {
+    override suspend fun getMovieCredits(movieId: Int): List<MovieCast> {
         return creditsDtoMapper.toDomainList(apiService.getMovieCredits(movieId).cast)
     }
 

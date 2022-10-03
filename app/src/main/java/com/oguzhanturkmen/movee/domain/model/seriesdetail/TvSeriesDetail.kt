@@ -2,7 +2,7 @@ package com.oguzhanturkmen.movee.domain.model.seriesdetail
 
 data class TvSeriesDetail(
     val id: Int,
-    val backdropPath: String,
+    val backdropPath: String?,
     val posterPath: String,
     val name: String,
     val numberOfEpisodes: Int,

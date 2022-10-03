@@ -53,7 +53,7 @@ object AppModule {
         api: ApiService,
         movieDtoMapper: MovieDtoMapper,
         movieDetailDtoMapper: MovieDetailDtoMapper,
-        creditsDtoMapper: CreditsDtoMapper,
+        creditsDtoMapper: MovieCreditsDtoMapper,
         personDtoMapper: PersonDtoMapper,
         personCreditsDtoMapper: PersonCreditsDtoMapper,
     ): MovieRepository {
@@ -72,9 +72,15 @@ object AppModule {
     fun provideTvSeriesRepository(
         api: ApiService,
         tvSeriesDtoMapper: TvSeriesDtoMapper,
-        tvSeriesDetailDtoMapper: TvSeriesDetailDtoMapper
+        tvSeriesDetailDtoMapper: TvSeriesDetailDtoMapper,
+        tvSeriesCreditsDtoMapper: TvSeriesCreditsDtoMapper
     ): TvSeriesRepository {
-        return TvSeriesRepositoryImpl(api, tvSeriesDtoMapper, tvSeriesDetailDtoMapper)
+        return TvSeriesRepositoryImpl(
+            api,
+            tvSeriesDtoMapper,
+            tvSeriesDetailDtoMapper,
+            tvSeriesCreditsDtoMapper
+        )
     }
 }
 

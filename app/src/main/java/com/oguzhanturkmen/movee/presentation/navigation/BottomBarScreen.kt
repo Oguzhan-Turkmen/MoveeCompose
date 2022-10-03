@@ -18,4 +18,9 @@ sealed class BottomBarScreen(
         route = "Series",
         image = R.drawable.ic_bottom_nav_icon_series
     )
+
+    object Search : BottomBarScreen(
+        route = "Search",
+        image = R.drawable.ic_bottom_nav_icon_search
+    )
 }

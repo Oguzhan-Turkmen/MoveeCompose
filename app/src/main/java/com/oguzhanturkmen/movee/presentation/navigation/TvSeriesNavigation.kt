@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.oguzhanturkmen.movee.presentation.TvSeriesScreen
+import com.oguzhanturkmen.movee.presentation.personDetail.PersonDetailScreen
 import com.oguzhanturkmen.movee.presentation.tvseriesdetail.TvSeriesDetailScreen
 
 
@@ -26,7 +27,13 @@ fun TvSeriesNavigation() {
             route = TvSeriesScreen.TvSeriesDetailScreen.route + "{tvSeriesId}",
             arguments = listOf(navArgument("tvSeriesId") { type = NavType.IntType })
         ) {
-            TvSeriesDetailScreen()
+            TvSeriesDetailScreen(navController = navController)
+        }
+        composable(
+            route = TvSeriesScreen.PersonDetailScreen.route + "{personId}",
+            arguments = listOf(navArgument("personId") { type = NavType.IntType })
+        ) {
+            PersonDetailScreen(navController = navController)
         }
     }
 }
@@ -34,4 +41,6 @@ fun TvSeriesNavigation() {
 sealed class TvSeriesScreen(val route: String) {
     object TvSereiesHomeScreen : TvSeriesScreen("home_screen")
     object TvSeriesDetailScreen : TvSeriesScreen("tvseries_detail_screen")
+    object PersonDetailScreen : MoviesScreen("person_detail_screen")
+
 }

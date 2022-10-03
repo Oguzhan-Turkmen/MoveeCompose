@@ -89,7 +89,7 @@ fun TvSeriesScreen(
                 Text(
                     modifier = Modifier
                         .padding(top = 32.dp, start = 32.dp),
-                    text = "Top Rated",
+                    text = "Popular",
                     style = TextStyle(fontSize = 34.sp),
                     color = Color.White,
                     fontWeight = FontWeight.Bold
@@ -104,7 +104,7 @@ fun TvSeriesScreen(
             Text(
                 modifier = Modifier
                     .padding(start = 32.dp),
-                text = "Popular",
+                text = "Top Rated",
                 style = TextStyle(fontSize = 24.sp),
                 color = Color.Black,
                 fontWeight = FontWeight.Bold

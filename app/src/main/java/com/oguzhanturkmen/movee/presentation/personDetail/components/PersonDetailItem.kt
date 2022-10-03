@@ -251,7 +251,7 @@ fun ExpandableText(
         if (!expanded) {
             val density = LocalDensity.current
             Text(
-                "... devam",
+                "... See more",
                 onTextLayout = { seeMoreSizeState.value = it.size },
                 modifier = Modifier
                     .then(
@@ -267,7 +267,7 @@ fun ExpandableText(
                         expanded = true
                         cutText = null
                     }
-                    .alpha(if (seeMoreOffset != null) 1f else 0f)
+                    .alpha(if (seeMoreOffset != null) 1f else 0f), fontWeight = FontWeight.Bold
             )
         }
     }

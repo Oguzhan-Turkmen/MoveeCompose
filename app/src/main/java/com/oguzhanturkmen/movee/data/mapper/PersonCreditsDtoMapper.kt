@@ -12,7 +12,7 @@ class PersonCreditsDtoMapper @Inject constructor() : DomainMapper<PersonCastsDto
             originalTitle = model.originalTitle,
             posterPath = model.posterPath,
             voteAverage = model.voteAverage,
-            releaseDate = model.releaseDate
+            releaseDate = model.releaseDate,
         )
     }
 

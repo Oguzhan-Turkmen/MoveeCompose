@@ -1,4 +1,4 @@
-package com.oguzhanturkmen.movee.data.remote.dto.creditsdto
+package com.oguzhanturkmen.movee.data.remote.dto.creditsdto.moviecredits
 
 data class Crew(
     val adult: Boolean,

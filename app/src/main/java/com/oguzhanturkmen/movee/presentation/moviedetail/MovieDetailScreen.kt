@@ -50,7 +50,7 @@ fun MovieDetailScreen(
                     LazyRow(modifier = Modifier) {
                         items(castState.movieCredit) { cast ->
                             Column() {
-                                castItem(
+                                movieCastItem(
                                     cast = cast,
                                     onClick = {
                                         navController.navigate(MoviesScreen.PersonDetailScreen.route + "${cast.id}")
@@ -61,7 +61,6 @@ fun MovieDetailScreen(
                     }
                 }
             }
-
         }
     }
 }
