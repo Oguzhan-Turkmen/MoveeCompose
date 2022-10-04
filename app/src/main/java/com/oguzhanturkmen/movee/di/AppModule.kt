@@ -4,8 +4,10 @@ import com.oguzhanturkmen.movee.common.Constants.BASE_URL
 import com.oguzhanturkmen.movee.data.mapper.*
 import com.oguzhanturkmen.movee.data.remote.ApiService
 import com.oguzhanturkmen.movee.data.repository.MovieRepositoryImpl
+import com.oguzhanturkmen.movee.data.repository.SearchRepositoryImpl
 import com.oguzhanturkmen.movee.data.repository.TvSeriesRepositoryImpl
 import com.oguzhanturkmen.movee.domain.repository.MovieRepository
+import com.oguzhanturkmen.movee.domain.repository.SearchRepository
 import com.oguzhanturkmen.movee.domain.repository.TvSeriesRepository
 import dagger.Module
 import dagger.Provides
@@ -81,6 +83,15 @@ object AppModule {
             tvSeriesDetailDtoMapper,
             tvSeriesCreditsDtoMapper
         )
+    }
+
+    @Singleton
+    @Provides
+    fun provideSearchRepository(
+        api: ApiService,
+        multiSearchResultDtoMapper: MultiSearchResultDtoMapper
+    ): SearchRepository {
+        return SearchRepositoryImpl(api, multiSearchResultDtoMapper)
     }
 }
 

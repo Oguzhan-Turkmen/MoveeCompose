@@ -51,7 +51,7 @@ fun PersonDetailScreen(
                         personCredits = personalCredit,
                         onClick = {
                             navController.navigate(MoviesScreen.MovieDetailScreen.route + "${personalCredit.id}")
-                            TODO("BURADA MOVİE VEYA DİZİ ŞEKLİNDE FİLTRELEME YAP.")
+
                         }
                     )
                 }

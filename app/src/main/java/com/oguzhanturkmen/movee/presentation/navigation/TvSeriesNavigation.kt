@@ -27,7 +27,7 @@ fun TvSeriesNavigation() {
             route = TvSeriesScreen.TvSeriesDetailScreen.route + "{tvSeriesId}",
             arguments = listOf(navArgument("tvSeriesId") { type = NavType.IntType })
         ) {
-            TvSeriesDetailScreen(navController = navController)
+            TvSeriesDetailScreen()
         }
         composable(
             route = TvSeriesScreen.PersonDetailScreen.route + "{personId}",

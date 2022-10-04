@@ -7,6 +7,7 @@ import com.oguzhanturkmen.movee.data.remote.dto.movieDetailDto.MovieDetailDto
 import com.oguzhanturkmen.movee.data.remote.dto.moviedto.MoviesDto
 import com.oguzhanturkmen.movee.data.remote.dto.personcredits.PersonCreditsDto
 import com.oguzhanturkmen.movee.data.remote.dto.persondto.PersonDto
+import com.oguzhanturkmen.movee.data.remote.dto.search.MultiSearchDto
 import com.oguzhanturkmen.movee.data.remote.dto.tvseriesdetaildto.TvSeriesDetailDto
 import com.oguzhanturkmen.movee.data.remote.dto.tvseriesdto.TvSerialsDto
 import retrofit2.http.GET
@@ -78,4 +79,10 @@ interface ApiService {
         @Path("tvId") tvId: Int,
         @Query("api_key") apiKey: String = API_KEY
     ): TvSeriesCreditDto
+
+    @GET("search/multi")
+    suspend fun multiSearch(
+        @Query("query") searchParams: String,
+        @Query("api_key") apiKey: String = API_KEY
+    ): MultiSearchDto
 }
