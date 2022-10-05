@@ -34,6 +34,7 @@ fun MoviesNavigation() {
         ) {
             PersonDetailScreen(navController = navController)
         }
+
     }
 }
 

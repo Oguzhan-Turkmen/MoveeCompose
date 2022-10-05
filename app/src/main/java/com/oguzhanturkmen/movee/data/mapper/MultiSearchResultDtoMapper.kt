@@ -16,7 +16,8 @@ class MultiSearchResultDtoMapper @Inject constructor() :
             overview = model.overview,
             originalTitle = model.originalTitle,
             name = model.name,
-            profilePath = model.profilePath
+            profilePath = model.profilePath,
+            knownForDepartment = model.knownForDepartment
         )
     }
 

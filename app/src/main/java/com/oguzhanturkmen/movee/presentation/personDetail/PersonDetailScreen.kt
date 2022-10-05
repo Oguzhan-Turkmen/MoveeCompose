@@ -45,18 +45,15 @@ fun PersonDetailScreen(
                         personDetailBiography(person = person)
                     }
                 }
-
                 items(personalCreditState.personCredit) { personalCredit ->
                     personelCreditsItem(
                         personCredits = personalCredit,
                         onClick = {
                             navController.navigate(MoviesScreen.MovieDetailScreen.route + "${personalCredit.id}")
-
                         }
                     )
                 }
             }
         }
-
     }
 }

@@ -148,13 +148,15 @@ fun SearchBar(
 @Composable
 fun SearchResultItem(
     searchResult: MultiSearchResult,
-    modifier: Modifier
+    modifier: Modifier,
+    onClick: () -> Unit,
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 16.dp, end = 16.dp),
         shape = RoundedCornerShape(corner = CornerSize(10.dp)),
+        onClick = onClick,
         elevation = 10.dp
     )
     {
@@ -295,10 +297,20 @@ fun String.capitalized(): String {
 
 @Composable
 fun SearchOverview(searchResult: MultiSearchResult) {
-    Text(
-        text = "${searchResult.overview}",
-        style = TextStyle(fontSize = 16.sp),
-        color = Color.Black,
-        maxLines = 2
-    )
+    if (searchResult.overview != null) {
+        Text(
+            text = "${searchResult.overview}",
+            style = TextStyle(fontSize = 16.sp),
+            color = Color.Black,
+            maxLines = 2
+        )
+    } else {
+        Text(
+            text = "${searchResult.knownForDepartment}",
+            style = TextStyle(fontSize = 16.sp),
+            color = Color.Black,
+            maxLines = 2
+        )
+    }
+
 }

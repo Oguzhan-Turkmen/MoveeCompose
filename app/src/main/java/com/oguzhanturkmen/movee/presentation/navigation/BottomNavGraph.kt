@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.oguzhanturkmen.movee.presentation.search.SearchScreen
 
 @Composable
 fun BottomNavGraph(navController: NavHostController) {
@@ -13,13 +12,14 @@ fun BottomNavGraph(navController: NavHostController) {
         startDestination = BottomBarScreen.Movies.route
     ) {
         composable(route = BottomBarScreen.Movies.route) {
+            //MainNavigation()
             MoviesNavigation()
         }
         composable(route = BottomBarScreen.Series.route) {
             TvSeriesNavigation()
         }
         composable(route = BottomBarScreen.Search.route) {
-            SearchScreen()
+            SearchNavigation()
         }
     }
 

@@ -9,6 +9,5 @@ data class MultiSearchResult(
     val originalTitle: String?,
     val name: String?,
     val profilePath: String?,
-
-
-    )
+    val knownForDepartment: String?,
+)
