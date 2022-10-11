@@ -42,5 +42,4 @@ class MovieRepositoryImpl @Inject constructor(
     override suspend fun getPersonCredits(personId: Int): List<PersonCredits> {
         return personCreditsDtoMapper.toDomainList(apiService.getPersonCredits(personId).cast)
     }
-
 }

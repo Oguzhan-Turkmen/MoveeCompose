@@ -10,17 +10,23 @@ sealed class BottomBarScreen(
     val image: Int
 ) {
     object Movies : BottomBarScreen(
-        route = "Movies",
+        route = "main_movie_screen",
         image = R.drawable.ic_bottom_nav_icon_movies
     )
 
     object Series : BottomBarScreen(
-        route = "Series",
+        route = "main_tv_series_screen",
         image = R.drawable.ic_bottom_nav_icon_series
     )
 
     object Search : BottomBarScreen(
-        route = "Search",
+        route = "search_home_screen",
         image = R.drawable.ic_bottom_nav_icon_search
     )
+
+    object Profile : BottomBarScreen(
+        route = "main_profile_screen",
+        image = R.drawable.ic_icons_tabbar_profil_selected
+    )
+
 }

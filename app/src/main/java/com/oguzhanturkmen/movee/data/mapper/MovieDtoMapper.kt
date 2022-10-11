@@ -7,7 +7,6 @@ import javax.inject.Inject
 
 
 class MovieDtoMapper @Inject constructor() : DomainMapper<MovieDto, Movie> {
-
     override fun mapToDomainModel(model: MovieDto): Movie {
         return Movie(
             id = model.id,
@@ -18,7 +17,5 @@ class MovieDtoMapper @Inject constructor() : DomainMapper<MovieDto, Movie> {
             overview = model.overview,
         )
     }
-
     fun toDomainList(initial: List<MovieDto>): List<Movie> = initial.map(this::mapToDomainModel)
-
 }

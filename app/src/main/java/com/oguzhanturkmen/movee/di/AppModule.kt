@@ -23,13 +23,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
     @Singleton
     @Provides
     fun providesLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     }
-
     @Singleton
     @Provides
     fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
@@ -37,7 +35,6 @@ object AppModule {
             .addInterceptor(httpLoggingInterceptor)
             .build()
     }
-
     @Singleton
     @Provides
     fun providesAPIService(okHttpClient: OkHttpClient): ApiService {
@@ -48,7 +45,6 @@ object AppModule {
             .build()
             .create(ApiService::class.java)
     }
-
     @Singleton
     @Provides
     fun provideMovieRepository(
@@ -68,7 +64,6 @@ object AppModule {
             personCreditsDtoMapper
         )
     }
-
     @Singleton
     @Provides
     fun provideTvSeriesRepository(
@@ -84,7 +79,6 @@ object AppModule {
             tvSeriesCreditsDtoMapper
         )
     }
-
     @Singleton
     @Provides
     fun provideSearchRepository(

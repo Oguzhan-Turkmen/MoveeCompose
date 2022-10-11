@@ -1,10 +1,10 @@
 package com.oguzhanturkmen.movee.presentation.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.oguzhanturkmen.movee.presentation.MoviesScreen
 import com.oguzhanturkmen.movee.presentation.TvSeriesScreen
@@ -14,17 +14,11 @@ import com.oguzhanturkmen.movee.presentation.search.SearchScreen
 import com.oguzhanturkmen.movee.presentation.tvseriesdetail.TvSeriesDetailScreen
 
 @Composable
-fun MainNavigation() {
-    val navController = rememberNavController()
+fun MainNavigation(navController: NavHostController) {
     NavHost(
         navController = navController,
         startDestination = MainScreens.MainMovieScreen.route
     ) {
-        composable(
-            route = MainScreens.BottomNavGraph.route
-        ) {
-            BottomNavGraph(navController = navController)
-        }
         composable(
             route = MainScreens.MainMovieScreen.route
         ) {
@@ -51,12 +45,17 @@ fun MainNavigation() {
             route = MainScreens.MainTvSeriesDetailScreen.route + "{tvSeriesId}",
             arguments = listOf(navArgument("tvSeriesId") { type = NavType.IntType })
         ) {
-            TvSeriesDetailScreen()
+            TvSeriesDetailScreen(navController = navController)
         }
         composable(
             route = MainScreens.SearchHomeScreen.route
         ) {
             SearchScreen(navController = navController)
+        }
+        composable(
+            route = MainScreens.MainProfileScreen.route
+        ) {
+
         }
     }
 }
@@ -68,5 +67,5 @@ sealed class MainScreens(val route: String) {
     object MainTvSeriesScreen : MainScreens("main_tv_series_screen")
     object MainTvSeriesDetailScreen : MainScreens("main_tv_series_detail_screen")
     object MainPersonDetailScreen : MainScreens("main_person_detail_screen")
-    object BottomNavGraph : MainScreens("bottom_nav_graph")
+    object MainProfileScreen : MainScreens("main_profile_screen")
 }

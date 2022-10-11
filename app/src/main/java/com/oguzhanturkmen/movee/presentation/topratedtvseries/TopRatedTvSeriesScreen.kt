@@ -17,7 +17,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.oguzhanturkmen.movee.presentation.navigation.TvSeriesScreen
 import com.oguzhanturkmen.movee.presentation.topratedtvseries.components.topRatedTvSeriesItem
 
 
@@ -39,7 +38,7 @@ fun TopRatedTvSeriesScreen(
                     tvSeries = tvseries,
                     modifier = Modifier,
                     onClick = {
-                        navController.navigate(TvSeriesScreen.TvSeriesDetailScreen.route + "${tvseries.id}")
+                       // navController.navigate(TvSeriesScreen.TvSeriesDetailScreen.route + "${tvseries.id}")
                     }
                 )
             }

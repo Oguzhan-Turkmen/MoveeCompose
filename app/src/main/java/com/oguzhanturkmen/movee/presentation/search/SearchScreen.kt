@@ -20,8 +20,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.oguzhanturkmen.movee.presentation.gradient
-import com.oguzhanturkmen.movee.presentation.navigation.SearchScreen
+import com.oguzhanturkmen.movee.common.gradient
+import com.oguzhanturkmen.movee.presentation.navigation.MainScreens
 import com.oguzhanturkmen.movee.presentation.search.components.SearchBar
 import com.oguzhanturkmen.movee.presentation.search.components.SearchResultItem
 
@@ -65,11 +65,11 @@ fun SearchScreen(
                         modifier = Modifier,
                         onClick = {
                             if (searchResult.mediaType == "movie") {
-                                navController.navigate(SearchScreen.MovieDetailSearchScreen.route + "${searchResult.id}")
+                                navController.navigate(MainScreens.MainMovieDetailScreen.route + "${searchResult.id}")
                             } else if (searchResult.mediaType == "tv") {
-                                navController.navigate(SearchScreen.TvSeriesSearchScreen.route + "${searchResult.id}")
+                                navController.navigate(MainScreens.MainTvSeriesDetailScreen.route + "${searchResult.id}")
                             } else {
-                                navController.navigate(SearchScreen.PersonDetailSearchScreen.route + "${searchResult.id}")
+                                navController.navigate(MainScreens.MainPersonDetailScreen.route + "${searchResult.id}")
                             }
                         }
                     )

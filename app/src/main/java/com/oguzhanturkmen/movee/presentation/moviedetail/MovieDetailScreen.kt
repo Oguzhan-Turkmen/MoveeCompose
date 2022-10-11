@@ -1,5 +1,6 @@
 package com.oguzhanturkmen.movee.presentation.moviedetail
 
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -12,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.oguzhanturkmen.movee.presentation.moviedetail.components.*
-import com.oguzhanturkmen.movee.presentation.navigation.MoviesScreen
+import com.oguzhanturkmen.movee.presentation.navigation.MainScreens
 
 
 @Composable
@@ -53,7 +54,11 @@ fun MovieDetailScreen(
                                 movieCastItem(
                                     cast = cast,
                                     onClick = {
-                                        navController.navigate(MoviesScreen.PersonDetailScreen.route + "${cast.id}")
+                                        Log.e(
+                                            "asdads",
+                                            navController.previousBackStackEntry.toString()
+                                        )
+                                        navController.navigate(MainScreens.MainPersonDetailScreen.route + "${cast.id}")
                                     }
                                 )
                             }

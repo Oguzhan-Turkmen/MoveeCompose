@@ -16,7 +16,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.oguzhanturkmen.movee.presentation.navigation.MoviesScreen
 import com.oguzhanturkmen.movee.presentation.popularMovie.components.PopularMoviesItem
 
 @Composable
@@ -36,7 +35,7 @@ fun PopularMoviesScreen(
                     movie = movie,
                     modifier = Modifier,
                     onClick = {
-                        navController.navigate(MoviesScreen.MovieDetailScreen.route + "${movie.id}")
+                       // navController.navigate(MoviesScreen.MovieDetailScreen.route + "${movie.id}")
                     }
                 )
             }

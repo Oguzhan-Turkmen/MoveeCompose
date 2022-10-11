@@ -17,8 +17,9 @@ class MultiSearchResultDtoMapper @Inject constructor() :
             originalTitle = model.originalTitle,
             name = model.name,
             profilePath = model.profilePath,
-            knownForDepartment = model.knownForDepartment
-        )
+            knownForDepartment = model.knownForDepartment,
+
+            )
     }
 
     fun toDomainList(initial: List<MultiSearchResultDto>): List<MultiSearchResult> =

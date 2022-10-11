@@ -133,12 +133,22 @@ fun personCreditsImage(personCredits: PersonCredits) {
 
 @Composable
 fun personelCreditsMovieTitle(personCredits: PersonCredits) {
-    Text(
-        text = "${personCredits.originalTitle}",
-        style = TextStyle(fontSize = 20.sp),
-        color = Color.Black,
-        fontWeight = FontWeight.Bold
-    )
+    if (personCredits.originalName == null) {
+        Text(
+            text = "${personCredits.originalTitle}",
+            style = TextStyle(fontSize = 20.sp),
+            color = Color.Black,
+            fontWeight = FontWeight.Bold
+        )
+    } else {
+        Text(
+            text = "${personCredits.originalName}",
+            style = TextStyle(fontSize = 20.sp),
+            color = Color.Black,
+            fontWeight = FontWeight.Bold
+        )
+    }
+
 }
 
 @Composable

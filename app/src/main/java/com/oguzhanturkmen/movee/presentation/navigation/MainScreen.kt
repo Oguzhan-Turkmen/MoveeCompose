@@ -33,18 +33,17 @@ fun MainScreen() {
             modifier = Modifier
                 .padding(PaddingValues(0.dp, 0.dp, 0.dp, innerPadding.calculateBottomPadding()))
         ) {
-            BottomNavGraph(navController = navController)
+            MainNavigation(navController)
         }
-
     }
 }
-
 @Composable
 fun BottomBar(navController: NavHostController) {
     val screens = listOf(
         BottomBarScreen.Movies,
         BottomBarScreen.Series,
-        BottomBarScreen.Search
+        BottomBarScreen.Search,
+        BottomBarScreen.Profile
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination

@@ -8,11 +8,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.oguzhanturkmen.movee.presentation.navigation.MoviesScreen
+import com.oguzhanturkmen.movee.presentation.navigation.MainScreens
 import com.oguzhanturkmen.movee.presentation.personDetail.components.personDetailBiography
 import com.oguzhanturkmen.movee.presentation.personDetail.components.personDetailImage
 import com.oguzhanturkmen.movee.presentation.personDetail.components.personDetailName
 import com.oguzhanturkmen.movee.presentation.personDetail.components.personelCreditsItem
+
 
 @Composable
 fun PersonDetailScreen(
@@ -49,7 +50,7 @@ fun PersonDetailScreen(
                     personelCreditsItem(
                         personCredits = personalCredit,
                         onClick = {
-                            navController.navigate(MoviesScreen.MovieDetailScreen.route + "${personalCredit.id}")
+                            navController.navigate(MainScreens.MainMovieDetailScreen.route + "${personalCredit.id}")
                         }
                     )
                 }
