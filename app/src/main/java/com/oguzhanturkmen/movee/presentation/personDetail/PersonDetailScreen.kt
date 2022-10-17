@@ -50,7 +50,11 @@ fun PersonDetailScreen(
                     personelCreditsItem(
                         personCredits = personalCredit,
                         onClick = {
-                            navController.navigate(MainScreens.MainMovieDetailScreen.route + "${personalCredit.id}")
+                            if (personalCredit.mediaType == "movie") {
+                                navController.navigate(MainScreens.MainMovieDetailScreen.route + "${personalCredit.id}")
+                            } else {
+                                navController.navigate(MainScreens.MainTvSeriesDetailScreen.route + "${personalCredit.id}")
+                            }
                         }
                     )
                 }

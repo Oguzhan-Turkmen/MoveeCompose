@@ -13,10 +13,10 @@ class PersonCreditsDtoMapper @Inject constructor() : DomainMapper<PersonCastsDto
             posterPath = model.posterPath,
             voteAverage = model.voteAverage,
             releaseDate = model.releaseDate,
-            originalName = model.originalName
+            originalName = model.originalName,
+            mediaType = model.mediaType
         )
     }
-
     fun toDomainList(initial: List<PersonCastsDto>): List<PersonCredits> =
         initial.map(this::mapToDomainModel)
 }

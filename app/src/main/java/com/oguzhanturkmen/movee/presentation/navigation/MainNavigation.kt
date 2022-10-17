@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.oguzhanturkmen.movee.presentation.MoviesScreen
 import com.oguzhanturkmen.movee.presentation.TvSeriesScreen
+import com.oguzhanturkmen.movee.presentation.map.MapScreen
 import com.oguzhanturkmen.movee.presentation.moviedetail.MovieDetailScreen
 import com.oguzhanturkmen.movee.presentation.personDetail.PersonDetailScreen
 import com.oguzhanturkmen.movee.presentation.search.SearchScreen
@@ -53,10 +54,16 @@ fun MainNavigation(navController: NavHostController) {
             SearchScreen(navController = navController)
         }
         composable(
+            route = MainScreens.MainMapScreen.route,
+        ) {
+            MapScreen()
+        }
+        composable(
             route = MainScreens.MainProfileScreen.route
         ) {
 
         }
+
     }
 }
 
@@ -68,4 +75,5 @@ sealed class MainScreens(val route: String) {
     object MainTvSeriesDetailScreen : MainScreens("main_tv_series_detail_screen")
     object MainPersonDetailScreen : MainScreens("main_person_detail_screen")
     object MainProfileScreen : MainScreens("main_profile_screen")
+    object MainMapScreen : MainScreens("main_map_screen")
 }

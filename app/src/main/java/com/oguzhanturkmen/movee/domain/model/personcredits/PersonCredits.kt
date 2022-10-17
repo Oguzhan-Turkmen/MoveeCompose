@@ -7,4 +7,6 @@ data class PersonCredits(
     val voteAverage: Double,
     val releaseDate: String?,
     val originalName: String?,
-)
+    val mediaType: String,
+
+    )

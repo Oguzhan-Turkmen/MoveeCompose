@@ -4,6 +4,6 @@ data class TvSeries(
     val id: Int,
     val name: String,
     val voteAvarage: Double,
-    val posterPath: String,
+    val posterPath: String?,
     val firstAirDate: String
 )

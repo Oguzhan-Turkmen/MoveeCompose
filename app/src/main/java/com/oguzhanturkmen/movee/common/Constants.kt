@@ -13,6 +13,8 @@ object Constants {
     const val PARAM_MOVIE_ID = "movieId"
     const val PARAM_TVSERIES_ID = "tvSeriesId"
     const val PARAM_PERSON_ID = "personId"
+    const val ZOOM = 8f
+    //213.74.86.197
 }
 
 val gradient = Brush.linearGradient(
