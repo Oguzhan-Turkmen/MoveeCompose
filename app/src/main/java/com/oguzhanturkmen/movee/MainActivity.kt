@@ -3,7 +3,8 @@ package com.oguzhanturkmen.movee
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.oguzhanturkmen.movee.presentation.navigation.MainScreen
+import androidx.navigation.compose.rememberNavController
+import com.oguzhanturkmen.movee.presentation.login.loginScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -12,9 +13,10 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            //MapScreen()
-            MainScreen()
-            //GoogleMapClustering()
+            //MainScreen()
+            val navController = rememberNavController()
+            loginScreen(navController)
+
         }
     }
 }

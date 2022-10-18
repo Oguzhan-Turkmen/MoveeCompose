@@ -1,11 +1,14 @@
 package com.oguzhanturkmen.movee.di
 
 import com.oguzhanturkmen.movee.common.Constants.BASE_URL
+import com.oguzhanturkmen.movee.data.firebase.FirebaseAuthLoginSourceProvider
 import com.oguzhanturkmen.movee.data.mapper.*
 import com.oguzhanturkmen.movee.data.remote.ApiService
+import com.oguzhanturkmen.movee.data.repository.FirebaseRepositoryImpl
 import com.oguzhanturkmen.movee.data.repository.MovieRepositoryImpl
 import com.oguzhanturkmen.movee.data.repository.SearchRepositoryImpl
 import com.oguzhanturkmen.movee.data.repository.TvSeriesRepositoryImpl
+import com.oguzhanturkmen.movee.domain.repository.FirebaseRepository
 import com.oguzhanturkmen.movee.domain.repository.MovieRepository
 import com.oguzhanturkmen.movee.domain.repository.SearchRepository
 import com.oguzhanturkmen.movee.domain.repository.TvSeriesRepository
@@ -23,6 +26,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+    //fused context burada tanımla @Appliccation context ile
     @Singleton
     @Provides
     fun providesLoggingInterceptor(): HttpLoggingInterceptor {
@@ -79,6 +83,7 @@ object AppModule {
             tvSeriesCreditsDtoMapper
         )
     }
+
     @Singleton
     @Provides
     fun provideSearchRepository(
@@ -87,5 +92,14 @@ object AppModule {
     ): SearchRepository {
         return SearchRepositoryImpl(api, multiSearchResultDtoMapper)
     }
+
+    @Singleton
+    @Provides
+    fun provideFirebaseRepository(
+        firebaseAuthLoginSourceProvider: FirebaseAuthLoginSourceProvider
+    ): FirebaseRepository {
+        return FirebaseRepositoryImpl(firebaseAuthLoginSourceProvider)
+    }
+
 }
 

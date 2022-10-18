@@ -46,7 +46,6 @@ fun SearchBar(
     autoFocus: Boolean,
     viewModel: SearchViewModel = hiltViewModel(),
     onSearch: () -> Unit
-
 ) {
     Box(
         modifier = Modifier

@@ -52,7 +52,7 @@ fun LocationPermissionsAndSettingDialogs(
                 requestLocationSetting = true
             },
             onPermissionDenied = {
-                requestLocationSetting = true
+                requestLocationSetting = false
             },
         )
     }
