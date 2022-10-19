@@ -16,7 +16,6 @@ import com.oguzhanturkmen.movee.presentation.map.LocationUtilsViewModel.getDefau
 import com.oguzhanturkmen.movee.presentation.map.LocationUtilsViewModel.getPosition
 import com.oguzhanturkmen.movee.presentation.map.LocationUtilsViewModel.requestLocationResultCallback
 
-private const val TAG = "LocationTrackActivity"
 
 /*
 @Composable

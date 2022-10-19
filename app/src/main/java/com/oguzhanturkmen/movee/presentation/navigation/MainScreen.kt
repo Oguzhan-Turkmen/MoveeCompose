@@ -11,6 +11,9 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -24,15 +27,22 @@ import androidx.navigation.compose.rememberNavController
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
+    var showBottomBar by rememberSaveable { mutableStateOf(true) }
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
     Scaffold(
         bottomBar =
-        { BottomBar(navController = navController) },
+        { if (showBottomBar) BottomBar(navController = navController) },
         modifier = Modifier.background(Color.White)
     ) { innerPadding ->
         Box(
             modifier = Modifier
                 .padding(PaddingValues(0.dp, 0.dp, 0.dp, innerPadding.calculateBottomPadding()))
         ) {
+            showBottomBar = when (navBackStackEntry?.destination?.route) {
+                "main_login_screen" -> false // on this screen bottom bar should be hidden
+                "main_sign_in_screen" -> false // here too
+                else -> true // in all other cases show bottom bar
+            }
             MainNavigation(navController)
         }
     }

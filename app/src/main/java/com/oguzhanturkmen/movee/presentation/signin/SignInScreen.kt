@@ -1,4 +1,4 @@
-package com.oguzhanturkmen.movee.presentation.login
+package com.oguzhanturkmen.movee.presentation.signin
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -27,22 +27,20 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.common.Resource
-import com.oguzhanturkmen.movee.presentation.login.components.accountText
-import com.oguzhanturkmen.movee.presentation.login.components.forgotPasswordText
 import com.oguzhanturkmen.movee.presentation.navigation.MainScreens
-import com.oguzhanturkmen.movee.presentation.signin.FirebaseViewModel
 import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
 
 @Composable
-fun loginScreen(
+fun signInScreen(
     navController: NavController,
     firebaseViewModel: FirebaseViewModel = hiltViewModel()
 ) {
     var emailInput: String by remember { mutableStateOf("") }
     val focusRequester = remember { FocusRequester() }
+    var nameInput: String by remember { mutableStateOf("") }
     var passwordInput by rememberSaveable { mutableStateOf("") }
     var passwordVisibility by remember { mutableStateOf(false) }
-    val loginFlow = firebaseViewModel?.loginFlow?.collectAsState()
+    val signupFlow = firebaseViewModel?.signupFlow?.collectAsState()
 
     Box(
         modifier = Modifier
@@ -65,6 +63,45 @@ fun loginScreen(
                 tint = Color.White
             )
             Column {
+                Column(
+
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = "Name",
+                        color = Color.White
+                    )
+                    TextField(
+                        value = nameInput,
+                        colors = TextFieldDefaults.outlinedTextFieldColors(
+                            focusedBorderColor = Color.White,
+                            unfocusedBorderColor = Color.White,
+                            disabledLabelColor = Color.White,
+                            textColor = Color.White
+                        ),
+                        //colors = TextFieldDefaults.textFieldColors(Color.White),
+                        onValueChange = {
+                            nameInput = it
+                        },
+                        modifier = Modifier
+                            .size(300.dp, 50.dp)
+                            .focusRequester(focusRequester = focusRequester),
+                        singleLine = true,
+                        placeholder = {
+                            Text(
+                                color = Color.White,
+                                text = "Enter Name",
+                            )
+                        },
+                        keyboardOptions = KeyboardOptions(
+                            autoCorrect = true,
+                            keyboardType = KeyboardType.Text,
+                            imeAction = ImeAction.Search
+                        ),
+
+                        )
+                }
+                Spacer(modifier = Modifier.height(40.dp))
                 Column(
 
                     verticalArrangement = Arrangement.Center
@@ -155,11 +192,10 @@ fun loginScreen(
                         ),
                     )
                 }
-                forgotPasswordText(onClick = {})
                 Spacer(modifier = Modifier.height(40.dp))
                 Button(
                     onClick = {
-                        firebaseViewModel.login(emailInput, passwordInput)
+                        firebaseViewModel?.signup(nameInput, emailInput, passwordInput)
                     },
                     modifier = Modifier
                         .size(300.dp, 40.dp),
@@ -168,33 +204,30 @@ fun loginScreen(
                     Text(
                         style = TextStyle(fontSize = 17.sp),
                         fontWeight = FontWeight.Bold,
-                        text = "Login",
+                        text = "Sign In",
                         color = RatingBarColor
                     )
                 }
             }
-            accountText(onClick = {
-                navController.navigate(MainScreens.MainSignInScreen.route)
-            })
-            loginFlow?.value?.let {
+            signupFlow?.value?.let {
                 when (it) {
-                    is Resource.Loading -> {
-                        CircularProgressIndicator(modifier = Modifier)
-                    }
                     is Resource.Success -> {
                         LaunchedEffect(Unit) {
-                            navController.navigate(MainScreens.MainMovieScreen.route) {
-                                popUpTo("main_login_screen") { inclusive = true }
+                            navController.navigate(MainScreens.MainProfileScreen.route) {
+                                popUpTo("main_sign_in_screen") { inclusive = true }
                             }
                         }
                     }
                     is Resource.Error -> {
                         val context = LocalContext.current
-                        Toast.makeText(context, it.statusMessage, Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, it.statusMessage, Toast.LENGTH_SHORT).show()
+                    }
+                    is Resource.Loading -> {
+                        CircularProgressIndicator(modifier = Modifier)
                     }
                 }
             }
+
         }
     }
 }
-

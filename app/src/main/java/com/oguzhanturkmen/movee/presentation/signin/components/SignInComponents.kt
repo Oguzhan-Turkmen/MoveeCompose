@@ -1,7 +1,8 @@
-package com.oguzhanturkmen.movee.presentation.login.components
+package com.oguzhanturkmen.movee.presentation.signin.components
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -23,71 +24,7 @@ import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
 
 @Composable
-fun loginButton(onClick: () -> Unit) {
-    Button(
-        onClick = {
-            onClick()
-        },
-        modifier = Modifier
-            .size(300.dp, 40.dp),
-        colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
-    ) {
-        Text(
-            style = TextStyle(fontSize = 17.sp),
-            fontWeight = FontWeight.Bold,
-            text = "Login",
-            color = RatingBarColor
-        )
-    }
-}
-
-@Composable
-fun eMailTextField() {
-    var emailInput: String by remember { mutableStateOf("") }
-    val focusRequester = remember { FocusRequester() }
-
-    Column(
-
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(
-            text = "Email",
-            color = Color.White
-        )
-        TextField(
-            value = emailInput,
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                focusedBorderColor = Color.White,
-                unfocusedBorderColor = Color.White,
-                disabledLabelColor = Color.White,
-                textColor = Color.White
-            ),
-            //colors = TextFieldDefaults.textFieldColors(Color.White),
-            onValueChange = {
-                emailInput = it
-            },
-            modifier = Modifier
-                .size(300.dp, 50.dp)
-                .focusRequester(focusRequester = focusRequester),
-            singleLine = true,
-            placeholder = {
-                Text(
-                    color = Color.White,
-                    text = "Enter Email",
-                )
-            },
-            keyboardOptions = KeyboardOptions(
-                autoCorrect = true,
-                keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Search
-            ),
-
-            )
-    }
-}
-
-@Composable
-fun passwordTextField() {
+fun passwordSignInTextField() {
     var passwordInput by rememberSaveable { mutableStateOf("") }
     val focusRequester = remember { FocusRequester() }
     var passwordVisibility by remember { mutableStateOf(false) }
@@ -146,34 +83,108 @@ fun passwordTextField() {
 }
 
 @Composable
-fun forgotPasswordText(onClick: () -> Unit) {
-    Text(
-        modifier = Modifier
-            .padding(top = 20.dp, start = 187.dp, end = 32.dp)
-            .clickable {
-                onClick()
+fun eMailSignInTextField() {
+    var emailInput: String by remember { mutableStateOf("") }
+    val focusRequester = remember { FocusRequester() }
+
+    Column(
+
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = "Email",
+            color = Color.White
+        )
+        TextField(
+            value = emailInput,
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.White,
+                unfocusedBorderColor = Color.White,
+                disabledLabelColor = Color.White,
+                textColor = Color.White
+            ),
+            //colors = TextFieldDefaults.textFieldColors(Color.White),
+            onValueChange = {
+                emailInput = it
             },
-        text = "Forgot Password?",
-        style = TextStyle(fontSize = 12.sp),
-        color = Color.White,
-    )
+            modifier = Modifier
+                .size(300.dp, 50.dp)
+                .focusRequester(focusRequester = focusRequester),
+            singleLine = true,
+            placeholder = {
+                Text(
+                    color = Color.White,
+                    text = "Enter Email",
+                )
+            },
+            keyboardOptions = KeyboardOptions(
+                autoCorrect = true,
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Search
+            ),
+
+            )
+    }
 }
 
 @Composable
-fun accountText(
-    onClick: () -> Unit
-) {
-    Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+fun nameSignInTextField() {
+    var emailInput: String by remember { mutableStateOf("") }
+    val focusRequester = remember { FocusRequester() }
+
+    Column(
+
+        verticalArrangement = Arrangement.Center
+    ) {
         Text(
-            text = "Don't have an account?",
-            color = Color.Gray
+            text = "Name",
+            color = Color.White
         )
+        TextField(
+            value = emailInput,
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.White,
+                unfocusedBorderColor = Color.White,
+                disabledLabelColor = Color.White,
+                textColor = Color.White
+            ),
+            //colors = TextFieldDefaults.textFieldColors(Color.White),
+            onValueChange = {
+                emailInput = it
+            },
+            modifier = Modifier
+                .size(300.dp, 50.dp)
+                .focusRequester(focusRequester = focusRequester),
+            singleLine = true,
+            placeholder = {
+                Text(
+                    color = Color.White,
+                    text = "Enter Name",
+                )
+            },
+            keyboardOptions = KeyboardOptions(
+                autoCorrect = true,
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Search
+            ),
+
+            )
+    }
+}
+
+@Composable
+fun signInButton() {
+    Button(
+        onClick = {},
+        modifier = Modifier
+            .size(300.dp, 40.dp),
+        colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)
+    ) {
         Text(
-            text = "Register Now",
-            color = Color.White,
-            modifier = Modifier.clickable {
-                onClick()
-            }
+            style = TextStyle(fontSize = 17.sp),
+            fontWeight = FontWeight.Bold,
+            text = "Sign In",
+            color = RatingBarColor
         )
     }
 }

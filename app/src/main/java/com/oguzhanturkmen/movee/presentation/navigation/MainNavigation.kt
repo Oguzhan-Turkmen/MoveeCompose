@@ -12,14 +12,16 @@ import com.oguzhanturkmen.movee.presentation.login.loginScreen
 import com.oguzhanturkmen.movee.presentation.map.MapScreen
 import com.oguzhanturkmen.movee.presentation.moviedetail.MovieDetailScreen
 import com.oguzhanturkmen.movee.presentation.personDetail.PersonDetailScreen
+import com.oguzhanturkmen.movee.presentation.profile.ProfileScreen
 import com.oguzhanturkmen.movee.presentation.search.SearchScreen
+import com.oguzhanturkmen.movee.presentation.signin.signInScreen
 import com.oguzhanturkmen.movee.presentation.tvseriesdetail.TvSeriesDetailScreen
 
 @Composable
 fun MainNavigation(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = MainScreens.MainMovieScreen.route
+        startDestination = MainScreens.MainLoginScreen.route
     ) {
         composable(
             route = MainScreens.MainMovieScreen.route
@@ -62,14 +64,18 @@ fun MainNavigation(navController: NavHostController) {
         composable(
             route = MainScreens.MainProfileScreen.route
         ) {
-
+            ProfileScreen(navController = navController)
         }
         composable(
             route = MainScreens.MainLoginScreen.route
         ) {
             loginScreen(navController = navController)
         }
-
+        composable(
+            route = MainScreens.MainSignInScreen.route
+        ) {
+            signInScreen(navController = navController)
+        }
     }
 }
 
@@ -83,4 +89,5 @@ sealed class MainScreens(val route: String) {
     object MainProfileScreen : MainScreens("main_profile_screen")
     object MainMapScreen : MainScreens("main_map_screen")
     object MainLoginScreen : MainScreens("main_login_screen")
+    object MainSignInScreen : MainScreens("main_sign_in_screen")
 }

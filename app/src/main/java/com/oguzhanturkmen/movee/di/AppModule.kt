@@ -1,7 +1,9 @@
 package com.oguzhanturkmen.movee.di
 
+
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.oguzhanturkmen.movee.common.Constants.BASE_URL
-import com.oguzhanturkmen.movee.data.firebase.FirebaseAuthLoginSourceProvider
 import com.oguzhanturkmen.movee.data.mapper.*
 import com.oguzhanturkmen.movee.data.remote.ApiService
 import com.oguzhanturkmen.movee.data.repository.FirebaseRepositoryImpl
@@ -95,11 +97,11 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideFirebaseRepository(
-        firebaseAuthLoginSourceProvider: FirebaseAuthLoginSourceProvider
-    ): FirebaseRepository {
-        return FirebaseRepositoryImpl(firebaseAuthLoginSourceProvider)
+    fun provideFirebaseRepository(): FirebaseRepository {
+        return FirebaseRepositoryImpl(provideFirebaseAuth())
     }
 
+    @Provides
+    fun provideFirebaseAuth() = Firebase.auth
 }
 
