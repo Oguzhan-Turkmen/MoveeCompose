@@ -35,7 +35,6 @@ fun PopularMoviesScreen(
                     movie = movie,
                     modifier = Modifier,
                     onClick = {
-                       // navController.navigate(MoviesScreen.MovieDetailScreen.route + "${movie.id}")
                     }
                 )
             }

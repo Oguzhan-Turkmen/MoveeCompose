@@ -12,7 +12,7 @@ class MovieDtoMapper @Inject constructor() : DomainMapper<MovieDto, Movie> {
             id = model.id,
             originalTitle = model.originalTitle,
             posterPath = model.posterPath,
-            voteAvarage = model.voteAverage,
+            voteAverage = model.voteAverage,
             releaseDate = model.releaseDate,
             overview = model.overview,
         )

@@ -7,17 +7,23 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.oguzhanturkmen.movee.common.Constants
 import com.oguzhanturkmen.movee.common.Resource
+import com.oguzhanturkmen.movee.domain.model.movie.Movie
 import com.oguzhanturkmen.movee.domain.useCase.GetMovieCreditsUseCase
 import com.oguzhanturkmen.movee.domain.useCase.GetMovieDetailUseCase
+import com.oguzhanturkmen.movee.domain.useCase.saveMovieUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
     private val getMovieDetailUseCase: GetMovieDetailUseCase,
     private val getMovieCreditsUseCase: GetMovieCreditsUseCase,
+    private val saveMovieUseCase: saveMovieUseCase,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -33,6 +39,15 @@ class MovieDetailViewModel @Inject constructor(
         }
         savedStateHandle.get<Int>(Constants.PARAM_MOVIE_ID)?.let { movieId ->
             getMovieCredit(movieId)
+        }
+    }
+
+    fun saveMovie(movie: Movie) {
+        viewModelScope.launch {
+            saveMovieUseCase(movie)
+                .flowOn(Dispatchers.IO)
+                .collect {
+                }
         }
     }
 

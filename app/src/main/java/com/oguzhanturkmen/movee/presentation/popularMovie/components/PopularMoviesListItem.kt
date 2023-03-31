@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.sp
 import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.common.Constants.BASE_BACKDROP_IMAGE_URL
 import com.oguzhanturkmen.movee.domain.model.movie.Movie
-import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
+import com.oguzhanturkmen.movee.presentation.theme.RatingBarColor
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.coil.CoilImage
@@ -97,7 +97,7 @@ fun popularMovieRating(movie: Movie, modifier: Modifier) {
                     .padding(1.dp)
             )
             Text(
-                text = "${movie.voteAvarage}",
+                text = "${movie.voteAverage}",
                 fontSize = 10.sp,
                 color = Color.White
             )

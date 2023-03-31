@@ -17,6 +17,9 @@ class FirebaseViewModel @Inject constructor(private val repository: FirebaseRepo
     private val _loginFlow = MutableStateFlow<Resource<FirebaseUser>?>(null)
     val loginFlow: StateFlow<Resource<FirebaseUser>?> = _loginFlow
 
+    private val _forgotPasswordFlow = MutableStateFlow<Resource<FirebaseUser>?>(null)
+    val forgotPasswordFlow: StateFlow<Resource<FirebaseUser>?> = _loginFlow
+
     private val _signupFlow = MutableStateFlow<Resource<FirebaseUser>?>(null)
     val signupFlow: StateFlow<Resource<FirebaseUser>?> = _signupFlow
 
@@ -28,6 +31,11 @@ class FirebaseViewModel @Inject constructor(private val repository: FirebaseRepo
             _loginFlow.value = Resource.Success(repository.currentUser!!)
         }
     }
+
+    /*  fun forgotPassword(email: String) = viewModelScope.launch {
+          _forgotPasswordFlow.value = Resource.Loading()
+          val result = repository.
+      }*/
 
     fun login(email: String, password: String) = viewModelScope.launch {
         _loginFlow.value = Resource.Loading()

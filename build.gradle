@@ -3,7 +3,7 @@ buildscript {
         compose_version = '1.2.1'
         hilt_version = "2.43.2"
         nav_version = "2.5.2"
-     
+        room_version = '2.4.0-alpha03'
     }
     dependencies {
         classpath('com.google.dagger:hilt-android-gradle-plugin:2.43.2')

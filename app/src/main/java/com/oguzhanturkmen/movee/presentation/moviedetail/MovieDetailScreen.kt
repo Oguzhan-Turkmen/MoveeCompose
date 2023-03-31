@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.oguzhanturkmen.movee.domain.model.movie.Movie
 import com.oguzhanturkmen.movee.presentation.moviedetail.components.*
 import com.oguzhanturkmen.movee.presentation.navigation.MainScreens
 
@@ -45,6 +46,19 @@ fun MovieDetailScreen(
                     Row(horizontalArrangement = Arrangement.spacedBy(32.dp)) {
                         movieDetailRunTime(movieDetail = movieDetail)
                         movieDetailReleaseDate(movieDetail = movieDetail)
+                        Spacer(modifier = Modifier.weight(1f))
+                        saveImage(onClick = {
+                            viewModel.saveMovie(
+                                movie = Movie(
+                                    id = movieDetail.id,
+                                    originalTitle = movieDetail.originalTitle,
+                                    overview = movieDetail.overview,
+                                    posterPath = movieDetail.posterPath,
+                                    voteAverage = movieDetail.voteAverage,
+                                    releaseDate = movieDetail.releaseDate
+                                )
+                            )
+                        })
                     }
                     movieDetailOverview(movieDetail = movieDetail)
 
@@ -69,3 +83,4 @@ fun MovieDetailScreen(
         }
     }
 }
+

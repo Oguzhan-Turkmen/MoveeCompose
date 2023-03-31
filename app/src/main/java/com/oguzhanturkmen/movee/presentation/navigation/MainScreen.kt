@@ -39,14 +39,16 @@ fun MainScreen() {
                 .padding(PaddingValues(0.dp, 0.dp, 0.dp, innerPadding.calculateBottomPadding()))
         ) {
             showBottomBar = when (navBackStackEntry?.destination?.route) {
-                "main_login_screen" -> false // on this screen bottom bar should be hidden
-                "main_sign_in_screen" -> false // here too
-                else -> true // in all other cases show bottom bar
+                "main_login_screen" -> false
+                "main_sign_in_screen" -> false
+                "main_forgot_password_screen" -> false
+                else -> true
             }
             MainNavigation(navController)
         }
     }
 }
+
 @Composable
 fun BottomBar(navController: NavHostController) {
     val screens = listOf(

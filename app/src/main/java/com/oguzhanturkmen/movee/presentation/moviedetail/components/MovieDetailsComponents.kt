@@ -3,6 +3,7 @@ package com.oguzhanturkmen.movee.presentation.moviedetail.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
@@ -25,7 +26,7 @@ import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.common.Constants
 import com.oguzhanturkmen.movee.domain.model.credits.MovieCast
 import com.oguzhanturkmen.movee.domain.model.movieDetail.MovieDetail
-import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
+import com.oguzhanturkmen.movee.presentation.theme.RatingBarColor
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.coil.CoilImage
@@ -102,6 +103,22 @@ fun movieDetailRating(movieDetail: MovieDetail) {
             )
         }
     }
+}
+
+@Composable
+fun saveImage(
+    onClick: () -> Unit
+) {
+    Image(
+        painter = painterResource(id = R.drawable.save),
+        contentDescription = null,
+        modifier = Modifier
+            .size(32.dp, 32.dp)
+            .padding(1.dp)
+            .clickable {
+                onClick()
+            }
+    )
 }
 
 @Composable
@@ -238,4 +255,7 @@ fun movieCastName(cast: MovieCast) {
         maxLines = 1
     )
 }
+
+
+
 

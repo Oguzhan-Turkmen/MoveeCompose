@@ -28,7 +28,7 @@ import androidx.navigation.NavController
 import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.common.Resource
 import com.oguzhanturkmen.movee.presentation.navigation.MainScreens
-import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
+import com.oguzhanturkmen.movee.presentation.theme.RatingBarColor
 
 @Composable
 fun signInScreen(
@@ -64,7 +64,6 @@ fun signInScreen(
             )
             Column {
                 Column(
-
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(

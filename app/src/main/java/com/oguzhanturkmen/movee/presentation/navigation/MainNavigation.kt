@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.oguzhanturkmen.movee.presentation.MoviesScreen
 import com.oguzhanturkmen.movee.presentation.TvSeriesScreen
+import com.oguzhanturkmen.movee.presentation.forgotpassword.ForgotPasswordScreen
 import com.oguzhanturkmen.movee.presentation.login.loginScreen
 import com.oguzhanturkmen.movee.presentation.map.MapScreen
 import com.oguzhanturkmen.movee.presentation.moviedetail.MovieDetailScreen
@@ -21,7 +22,7 @@ import com.oguzhanturkmen.movee.presentation.tvseriesdetail.TvSeriesDetailScreen
 fun MainNavigation(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = MainScreens.MainLoginScreen.route
+        startDestination = MainScreens.MainMovieScreen.route
     ) {
         composable(
             route = MainScreens.MainMovieScreen.route
@@ -76,6 +77,11 @@ fun MainNavigation(navController: NavHostController) {
         ) {
             signInScreen(navController = navController)
         }
+        composable(
+            route = MainScreens.MainForgotPasswordScreen.route
+        ) {
+            ForgotPasswordScreen()
+        }
     }
 }
 
@@ -90,4 +96,5 @@ sealed class MainScreens(val route: String) {
     object MainMapScreen : MainScreens("main_map_screen")
     object MainLoginScreen : MainScreens("main_login_screen")
     object MainSignInScreen : MainScreens("main_sign_in_screen")
+    object MainForgotPasswordScreen : MainScreens("main_forgot_password_screen")
 }

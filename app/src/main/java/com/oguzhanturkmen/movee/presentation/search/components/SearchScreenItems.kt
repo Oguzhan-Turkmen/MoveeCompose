@@ -34,7 +34,7 @@ import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.common.Constants
 import com.oguzhanturkmen.movee.domain.model.search.MultiSearchResult
 import com.oguzhanturkmen.movee.presentation.search.SearchViewModel
-import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
+import com.oguzhanturkmen.movee.presentation.theme.RatingBarColor
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.coil.CoilImage

@@ -1,4 +1,4 @@
-package com.oguzhanturkmen.movee.ui.theme
+package com.oguzhanturkmen.movee.presentation.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

@@ -24,6 +24,16 @@ class FirebaseRepositoryImpl @Inject constructor(private var firebaseAuth: Fireb
             )
         }
     }
+    /*override suspend fun forgotPassword(email: String): Resource<FirebaseUser> {
+        return try {
+            val result = firebaseAuth.sendPasswordResetEmail(email).await()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Resource.Error(
+                e.localizedMessage ?: "Couldn't reach server. Check your internet connection."
+            )
+        }
+    }*/
 
     override suspend fun signup(
         name: String,
@@ -43,6 +53,7 @@ class FirebaseRepositoryImpl @Inject constructor(private var firebaseAuth: Fireb
             )
         }
     }
+
 
     override fun logout() {
         firebaseAuth.signOut()

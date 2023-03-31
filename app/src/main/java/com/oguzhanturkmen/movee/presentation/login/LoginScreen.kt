@@ -31,7 +31,7 @@ import com.oguzhanturkmen.movee.presentation.login.components.accountText
 import com.oguzhanturkmen.movee.presentation.login.components.forgotPasswordText
 import com.oguzhanturkmen.movee.presentation.navigation.MainScreens
 import com.oguzhanturkmen.movee.presentation.signin.FirebaseViewModel
-import com.oguzhanturkmen.movee.ui.theme.RatingBarColor
+import com.oguzhanturkmen.movee.presentation.theme.RatingBarColor
 
 @Composable
 fun loginScreen(
@@ -42,7 +42,8 @@ fun loginScreen(
     val focusRequester = remember { FocusRequester() }
     var passwordInput by rememberSaveable { mutableStateOf("") }
     var passwordVisibility by remember { mutableStateOf(false) }
-    val loginFlow = firebaseViewModel?.loginFlow?.collectAsState()
+    val loginFlow = firebaseViewModel.loginFlow.collectAsState()
+    val isError by rememberSaveable { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
@@ -66,7 +67,6 @@ fun loginScreen(
             )
             Column {
                 Column(
-
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(
@@ -89,6 +89,7 @@ fun loginScreen(
                             .size(300.dp, 50.dp)
                             .focusRequester(focusRequester = focusRequester),
                         singleLine = true,
+                        isError = isError,
                         placeholder = {
                             Text(
                                 color = Color.White,
@@ -100,8 +101,7 @@ fun loginScreen(
                             keyboardType = KeyboardType.Text,
                             imeAction = ImeAction.Search
                         ),
-
-                        )
+                    )
                 }
                 Spacer(modifier = Modifier.height(40.dp))
                 Column(
@@ -155,7 +155,9 @@ fun loginScreen(
                         ),
                     )
                 }
-                forgotPasswordText(onClick = {})
+                forgotPasswordText(onClick = {
+                    navController.navigate(MainScreens.MainForgotPasswordScreen.route)
+                })
                 Spacer(modifier = Modifier.height(40.dp))
                 Button(
                     onClick = {
@@ -176,7 +178,7 @@ fun loginScreen(
             accountText(onClick = {
                 navController.navigate(MainScreens.MainSignInScreen.route)
             })
-            loginFlow?.value?.let {
+            loginFlow.value?.let {
                 when (it) {
                     is Resource.Loading -> {
                         CircularProgressIndicator(modifier = Modifier)

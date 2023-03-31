@@ -1,4 +1,4 @@
-package com.oguzhanturkmen.movee.ui.theme
+package com.oguzhanturkmen.movee.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
