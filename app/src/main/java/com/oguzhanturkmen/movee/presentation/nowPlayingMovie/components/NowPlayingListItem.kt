@@ -3,7 +3,13 @@ package com.oguzhanturkmen.movee.presentation.nowPlayingMovie.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -18,6 +24,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oguzhanturkmen.movee.R
@@ -63,7 +70,7 @@ fun nowPlayingMoviesItem(
     }
 }
 
-/*@Preview
+@Preview
 @Composable
 fun previewItem() {
     nowPlayingMoviesItem(
@@ -71,14 +78,16 @@ fun previewItem() {
             1,
             "Joker",
             "/v28T5F1IygM8vXWZIycfNEm3xcL.jpg",
+            "asdas",
             5.4,
-            "2022-08-11"
-        ),
+            "2022-08-11",
+
+            ),
         modifier = Modifier
     ) {
 
     }
-}*/
+}
 
 @Composable
 fun nowPlayingMovieImage(

@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class saveMovieUseCase @Inject constructor(
+class SaveMovieUseCase @Inject constructor(
     private val repository: MoveeDbRepository
 ) {
     operator fun invoke(movie: Movie): Flow<Unit> = flow {

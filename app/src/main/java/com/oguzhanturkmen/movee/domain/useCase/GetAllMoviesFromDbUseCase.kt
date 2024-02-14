@@ -6,12 +6,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class deleteMovieUseCase @Inject constructor(
+class GetAllMoviesFromDbUseCase @Inject constructor(
     private val repository: MoveeDbRepository
-
 ) {
-    operator fun invoke(movie: Movie): Flow<Unit> = flow {
-        val deleteMovie = repository.deleteMovie(movie)
-        emit(deleteMovie)
+    operator fun invoke(): Flow<List<Movie>> = flow {
+        val allMovies = repository.getAllMovies()
+        emit(allMovies)
     }
 }

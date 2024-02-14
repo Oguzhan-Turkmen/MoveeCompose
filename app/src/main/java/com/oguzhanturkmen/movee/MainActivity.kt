@@ -13,8 +13,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MainScreen()
-            // val navController = rememberNavController()
-            //signInScreen(navController =navController )
         }
     }
 }
