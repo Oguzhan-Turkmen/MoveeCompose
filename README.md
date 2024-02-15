@@ -5,14 +5,15 @@
 
   API_KEY_TMDB = Your API Key
 
-* Compose 
+* Compose
+* MVVM
 * Retrofit 
 * Coroutines
 * ViewModel
 * Flow
 * Jetpack Navigation
 * Room Database
-* FireBase
+* FireBase-Auth
 * Dagger-Hilt
 * LandScapist-Coil
 * Accompanist-Pager
