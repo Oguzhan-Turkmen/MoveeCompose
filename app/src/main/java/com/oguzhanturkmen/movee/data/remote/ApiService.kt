@@ -1,6 +1,6 @@
 package com.oguzhanturkmen.movee.data.remote
 
-import com.oguzhanturkmen.movee.common.Constants.API_KEY
+import com.oguzhanturkmen.movee.BuildConfig
 import com.oguzhanturkmen.movee.data.remote.dto.creditsdto.moviecredits.CreditsDto
 import com.oguzhanturkmen.movee.data.remote.dto.creditsdto.tvseriescredits.TvSeriesCreditDto
 import com.oguzhanturkmen.movee.data.remote.dto.movieDetailDto.MovieDetailDto
@@ -85,4 +85,8 @@ interface ApiService {
         @Query("query") searchParams: String,
         @Query("api_key") apiKey: String = API_KEY
     ): MultiSearchDto
+
+    companion object {
+        const val API_KEY = BuildConfig.API_KEY
+    }
 }

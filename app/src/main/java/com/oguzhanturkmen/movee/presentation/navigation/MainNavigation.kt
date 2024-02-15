@@ -22,7 +22,7 @@ import com.oguzhanturkmen.movee.presentation.tvseriesdetail.TvSeriesDetailScreen
 fun MainNavigation(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = MainScreens.MainMovieScreen.route
+        startDestination = MainScreens.MainSignInScreen.route
     ) {
         composable(
             route = MainScreens.MainMovieScreen.route

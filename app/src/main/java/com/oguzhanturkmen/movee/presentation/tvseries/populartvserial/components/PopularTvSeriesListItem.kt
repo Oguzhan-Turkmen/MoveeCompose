@@ -3,7 +3,12 @@ package com.oguzhanturkmen.movee.presentation.tvseries.populartvserial.component
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -19,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.common.Constants
+import com.oguzhanturkmen.movee.common.withDecimalDigits
 import com.oguzhanturkmen.movee.domain.model.series.TvSeries
 import com.oguzhanturkmen.movee.presentation.theme.RatingBarColor
 import com.skydoves.landscapist.CircularReveal
@@ -93,7 +99,7 @@ fun popularTvSeriesRating(tvSeries: TvSeries, modifier: Modifier) {
                     .padding(1.dp)
             )
             Text(
-                text = "${tvSeries.voteAvarage}",
+                text = "${tvSeries.voteAvarage.withDecimalDigits(1)}",
                 fontSize = 14.sp,
                 color = Color.White
             )

@@ -3,7 +3,15 @@ package com.oguzhanturkmen.movee.presentation.topratedtvseries.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -24,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.common.Constants.BASE_BACKDROP_IMAGE_URL
+import com.oguzhanturkmen.movee.common.withDecimalDigits
 import com.oguzhanturkmen.movee.domain.model.series.TvSeries
 import com.oguzhanturkmen.movee.presentation.theme.RatingBarColor
 import com.skydoves.landscapist.CircularReveal
@@ -100,7 +109,7 @@ fun topRatedTvSeriesRating(
                     .padding(1.dp)
             )
             Text(
-                text = "${tvSeries.voteAvarage}",
+                text = "${tvSeries.voteAvarage.withDecimalDigits(1)}",
                 fontSize = 10.sp,
                 color = Color.White
             )

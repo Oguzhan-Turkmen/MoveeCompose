@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oguzhanturkmen.movee.R
 import com.oguzhanturkmen.movee.common.Constants
+import com.oguzhanturkmen.movee.common.withDecimalDigits
 import com.oguzhanturkmen.movee.domain.model.movie.Movie
 import com.oguzhanturkmen.movee.presentation.theme.RatingBarColor
 import com.skydoves.landscapist.CircularReveal
@@ -155,7 +156,7 @@ fun nowPlayingRating(movie: Movie, modifier: Modifier) {
                     .padding(end = 4.dp)
             )
             Text(
-                text = "${movie.voteAverage}",
+                text = "${movie.voteAverage.withDecimalDigits(1)}",
                 fontSize = 14.sp,
                 color = Color.White
             )
@@ -173,55 +174,3 @@ fun nowPlayingMovieTitle(movie: Movie, modifier: Modifier) {
         maxLines = 1
     )
 }
-
-
-/*@Composable
-fun gradiant() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .drawBehind {
-                drawRect(
-                    brush = gradient,
-                    topLeft = Offset(x = 0f, y = 0.dp.toPx()),
-                    size = Size(500.dp.toPx(), 250.dp.toPx())
-                )
-            }
-
-
-    )
-}*/
-/*
-
-@Preview
-@Composable
-fun preview1() {
-    gradiant()
-}
-
-@Preview
-@Composable
-fun PreviewPopularMovieTitle() {
-    nowPlayingMovieTitle(movie = Movie(1, "Joker", "asd", 5.3, "2022-08-11"), modifier = Modifier)
-}
-
-@Preview
-@Composable
-fun PreviewRating() {
-    nowPlayingRating(movie = Movie(1, "Joker", "asd", 5.3, "2022-08-11"), modifier = Modifier)
-}
-
-@Preview
-@Composable
-fun PreviewImage() {
-    nowPlayingMovieImage(
-        movie = Movie(
-            1,
-            "Joker",
-            "/v28T5F1IygM8vXWZIycfNEm3xcL.jpg",
-            5.4,
-            "2022-08-11"
-        ),
-        modifier = Modifier
-    )
-}*/
