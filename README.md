@@ -28,7 +28,7 @@
 <img src="https://github.com/Oguzhan-Turkmen/MoveeCompose/assets/76784862/c18fc2b6-fab2-4b1e-bff6-593858d35a8b" width="250" height="500">
 <img src="https://github.com/Oguzhan-Turkmen/MoveeCompose/assets/76784862/246c37f6-b542-4b8d-b6c5-363c6c7c9ae2" width="250" height="500">
 <img src="https://github.com/Oguzhan-Turkmen/MoveeCompose/assets/76784862/9ab3922f-40f9-46ba-aa02-ef96cf41ce3f" width="250" height="500">
-<img src="https://github.com/Oguzhan-Turkmen/MoveeCompose/assets/76784862/dbf19b8a-247e-4526-a25d-79f53fd9bbd8" width="250" height="500">
+<img src="https://github.com/Oguzhan-Turkmen/MoveeCompose/assets/76784862/07fda88b-090a-40ca-9b23-2debac88ecc9" width="250" height="500">
 
 
 ## App Architecture
